@@ -15,7 +15,7 @@ import android.widget.ImageView;
 
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
-import com.example.teammates.fragment.AddFragment;
+import com.example.teammates.fragment.MessageFragment;
 import com.example.teammates.fragment.HomeFragment;
 import com.example.teammates.fragment.MeFragment;
 import com.example.teammates.fragment.SearchFragment;
@@ -58,9 +58,9 @@ public class MainActivity extends FragmentActivity {
 
         mFragmentList.add(searchFragment);
 
-        AddFragment addFragment = new AddFragment();
+        MessageFragment messageFragment = new MessageFragment();
 
-        mFragmentList.add(addFragment);
+        mFragmentList.add(messageFragment);
 
         MeFragment meFragment = new MeFragment();
 
@@ -116,7 +116,7 @@ public class MainActivity extends FragmentActivity {
 
         mBottomBarLayout.setUnread(0,0);//设置第一个页签的未读数为20
         mBottomBarLayout.setUnread(1,0);//设置第二个页签的未读数
-        mBottomBarLayout.showNotify(2);//设置第三个页签显示提示的小红点
+        mBottomBarLayout.setUnread(2,0);//设置第三个页签显示提示的小红点
         mBottomBarLayout.setMsg(3,"NEW");//设置第四个页签显示NEW提示文字
     }
 

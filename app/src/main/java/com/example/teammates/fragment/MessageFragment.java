@@ -15,13 +15,13 @@ import com.example.teammates.R;
  * Created by hanzhen on 2018/2/24.
  */
 
-public class AddFragment extends Fragment {
+public class MessageFragment extends Fragment {
     private View view;
     private Button button;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_add,container,false);
+        view=inflater.inflate(R.layout.fragment_message,container,false);
         return view;
     }
 

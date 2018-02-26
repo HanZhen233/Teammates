@@ -1,2 +1,1 @@
-# Teammates
-A Android App 
+A Android App
