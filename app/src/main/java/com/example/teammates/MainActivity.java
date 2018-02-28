@@ -9,9 +9,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
@@ -20,11 +23,15 @@ import com.example.teammates.fragment.HomeFragment;
 import com.example.teammates.fragment.MeFragment;
 import com.example.teammates.fragment.SearchFragment;
 
+import org.litepal.tablemanager.Connector;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends FragmentActivity {
+
+    private TextView status;
 
     private ViewPager mVpContent;
     private BottomBarLayout mBottomBarLayout;
@@ -38,9 +45,22 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+        获取fragment_me里的 一个textView  更改登录状态,,status
+         */
+        LayoutInflater inflater=LayoutInflater.from(this);
+        final View textEntryView=inflater.inflate(R.layout.fragment_me,null);
+        final TextView status=(TextView)textEntryView.findViewById(R.id.status);
+
+        String isLogin=getIntent().getStringExtra("status");
+        if(isLogin.equals("ok")){
+            status.setText("已登录");
+        }
+
         initView();
         initData();
         initListener();
+        Connector.getDatabase();
     }
 
     private void initView() {

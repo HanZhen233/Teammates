@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends BaseActivity {
@@ -22,6 +23,10 @@ public class LoginActivity extends BaseActivity {
 
     private Button login;
 
+    private Button register;
+
+    //private TextView status;
+
     private CheckBox rememberPass;
 
     @Override
@@ -33,6 +38,7 @@ public class LoginActivity extends BaseActivity {
         passwordEdit = (EditText) findViewById(R.id.password);
         rememberPass = (CheckBox) findViewById(R.id.remember_pass);
         login = (Button) findViewById(R.id.login);
+        register=(Button)findViewById(R.id.register);
         boolean isRemember = pref.getBoolean("remember_password", false);
         if (isRemember) {
             // 将账号和密码都设置到文本框中
@@ -58,7 +64,10 @@ public class LoginActivity extends BaseActivity {
                         editor.clear();
                     }
                     editor.apply();
+                  //  status=(TextView)findViewById(R.id.status);
+                    //status.setText("已登录");
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("status","ok");
                     startActivity(intent);
                     finish();
                 } else {
@@ -67,6 +76,16 @@ public class LoginActivity extends BaseActivity {
                 }
             }
         });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 
 }

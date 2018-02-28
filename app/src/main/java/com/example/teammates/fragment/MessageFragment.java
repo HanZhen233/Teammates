@@ -17,7 +17,7 @@ import com.example.teammates.R;
 
 public class MessageFragment extends Fragment {
     private View view;
-    private Button button;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,12 +28,6 @@ public class MessageFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        button=(Button)getActivity().findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"success",Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 }

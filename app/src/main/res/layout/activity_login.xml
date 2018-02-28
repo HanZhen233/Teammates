@@ -60,10 +60,31 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/login"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Login" />
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:text="登录"
+            android:textAllCaps="false"
+
+            />
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:text="注册"
+            android:textAllCaps="false"
+
+            />
+    </LinearLayout>
+
+
 
 </LinearLayout>
