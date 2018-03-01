@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.example.teammates.Data.DataSelfActivity;
+import com.bumptech.glide.Glide;
+import com.example.teammates.Data.MessageActivity;
 import com.example.teammates.R;
 
 import java.util.List;
@@ -40,12 +42,15 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         final Information information=mInfoList.get(position);
-        holder.itemName.setText(information.getName());
+        holder.content.setText(information.getContent());
+        //用glide加载 图片
+        Glide.with(context).load(information.getImageId()).into(holder.head);
         holder.InfoView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(view.getContext(), DataSelfActivity.class);
-                intent.putExtra("key",information.getName());
+                Intent intent=new Intent(context, MessageActivity.class);
+                intent.putExtra("head",information.getImageId());
+                intent.putExtra("content",information.getContent());
                 context.startActivity(intent);
             }
         });
@@ -58,14 +63,15 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
 
    static class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView itemName;
+        TextView content;
         View InfoView;
+        ImageView head;
 
         public ViewHolder(View view){
             super(view);
             InfoView=view;
-            itemName=(TextView)view.findViewById(R.id.item_name);
-
+            content=(TextView)view.findViewById(R.id.content);
+            head=(ImageView)view.findViewById(R.id.head);
         }
     }
 }

@@ -5,13 +5,23 @@ package com.example.teammates.recycler_item;
  */
 
 public class Information {
-    private String name;
 
-    public String getName() {
-        return name;
+    private String content;
+    private int imageId;
+
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 }

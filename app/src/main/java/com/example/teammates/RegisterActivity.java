@@ -1,12 +1,17 @@
 package com.example.teammates;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.chaychan.library.BottomBarItem;
+import com.chaychan.library.BottomBarLayout;
 import com.example.teammates.Data.Person;
+import com.example.teammates.fragment.MeFragment;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -45,8 +50,10 @@ public class RegisterActivity extends AppCompatActivity {
                 person.setPhone(phone.getText().toString());
                 person.setMessage(message.getText().toString());
                 person.save();
-                finish();
 
+                Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
+
+                startActivity(intent);
             }
         });
     }

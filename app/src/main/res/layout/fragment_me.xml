@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/back"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:id="@+id/title"
-        android:text="我"
-        android:layout_margin="5dp"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        />
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="我"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"
@@ -27,14 +36,13 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:id="@+id/image_layout"
-        android:background="#F5F5F5"
         android:layout_below="@id/up_line"
         android:orientation="vertical"
+
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_marginTop="50dp"
-
+            android:layout_marginTop="20dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -48,8 +56,20 @@
             android:layout_height="wrap_content"
             android:text="未登录"
             android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:id="@+id/status_out"
+            android:textColor="@color/white"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="已登录"
+            android:textSize="20sp"
             android:layout_margin="20dp"
-            android:id="@+id/status"
+            android:id="@+id/status_in"
+            android:visibility="gone"
             />
 
     </LinearLayout>
@@ -67,13 +87,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_below="@id/down_line"
-        android:layout_margin="5dp"
         >
-        <android.support.v7.widget.RecyclerView
+
+        <Button
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recycler_view"
+            android:layout_height="wrap_content"
+            android:text="个人信息"
+            android:id="@+id/self"
+            android:background="#0000"
+            android:textSize="20sp"
+            android:textColor="@color/white"
             />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:id="@+id/set"
+            android:background="#0000"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="关于我们"
+            android:id="@+id/us"
+            android:background="#0000"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            />
+
 
     </LinearLayout>
 

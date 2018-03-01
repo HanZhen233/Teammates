@@ -1,6 +1,8 @@
 package com.example.teammates;
 
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -31,7 +33,6 @@ import java.util.List;
 
 public class MainActivity extends FragmentActivity {
 
-    private TextView status;
 
     private ViewPager mVpContent;
     private BottomBarLayout mBottomBarLayout;
@@ -40,27 +41,29 @@ public class MainActivity extends FragmentActivity {
     private RotateAnimation mRotateAnimation;
     private Handler mHandler = new Handler();
 
+    public int Position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        /*
-        获取fragment_me里的 一个textView  更改登录状态,,status
-         */
-        LayoutInflater inflater=LayoutInflater.from(this);
-        final View textEntryView=inflater.inflate(R.layout.fragment_me,null);
-        final TextView status=(TextView)textEntryView.findViewById(R.id.status);
-
-        String isLogin=getIntent().getStringExtra("status");
-        if(isLogin.equals("ok")){
-            status.setText("已登录");
+        if (Build.VERSION.SDK_INT >= 21) {
+            View decorView = getWindow().getDecorView();
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
+        setContentView(R.layout.activity_main);
 
         initView();
         initData();
         initListener();
         Connector.getDatabase();
+    }
+
+    protected void onResume(){
+        super.onResume();
+        if(getIntent()!=null){
+            Position=getIntent().getIntExtra("position",0);
+        }
     }
 
     private void initView() {
@@ -90,6 +93,14 @@ public class MainActivity extends FragmentActivity {
     private void initListener() {
         mVpContent.setAdapter(new MyAdapter(getSupportFragmentManager()));
         mBottomBarLayout.setViewPager(mVpContent);
+
+        /*
+        想要让 登录或者注册完能够返回到 我的而不是主页面中
+         */
+       // mBottomBarLayout.getBottomItem(3);
+        //Log.d("position1",String.valueOf(Position));
+
+
         mBottomBarLayout.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final BottomBarItem bottomBarItem, int position) {
@@ -117,7 +128,7 @@ public class MainActivity extends FragmentActivity {
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                bottomBarItem.setIconSelectedResourceId(R.mipmap.tab_home_selected);//更换成首页原来图标
+                                bottomBarItem.setIconSelectedResourceId(R.mipmap.tab_home_selected);//更换成首页点击图标
                                 bottomBarItem.setStatus(true);//刷新图标
                                 cancelTabLoading(bottomBarItem);
                             }
@@ -125,6 +136,10 @@ public class MainActivity extends FragmentActivity {
                         return;
                     }
                 }
+
+                /*
+                感觉这段 的注释 有问题
+                 */
 
                 //如果点击了其他条目
                 BottomBarItem bottomItem = mBottomBarLayout.getBottomItem(0);
