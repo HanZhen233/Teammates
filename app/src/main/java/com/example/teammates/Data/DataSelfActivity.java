@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.teammates.R;
+import com.example.teammates.RegisterActivity;
 
 import org.litepal.crud.DataSupport;
 
@@ -25,6 +26,7 @@ public class DataSelfActivity extends AppCompatActivity {
     private TextView school_information;
     private TextView technology_information;
     private TextView phone_information;
+    private Button update;
 
     private Button cancellation_setting;//注销
 
@@ -40,6 +42,7 @@ public class DataSelfActivity extends AppCompatActivity {
         school_information=(TextView)findViewById(R.id.school);
         technology_information=(TextView)findViewById(R.id.technology);
         phone_information=(TextView)findViewById(R.id.phone);
+        update=(Button)findViewById(R.id.update);
 
         cancellation_setting=(Button)findViewById(R.id.cancellation);
 
@@ -50,7 +53,7 @@ public class DataSelfActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myself);
         initView();
-        Intent intent=getIntent();
+        final Intent intent=getIntent();
         String content=intent.getStringExtra("key");
 
         switch (content){
@@ -67,7 +70,13 @@ public class DataSelfActivity extends AppCompatActivity {
 
                     }
                 }
-
+                update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent1=new Intent(DataSelfActivity.this, RegisterActivity.class);
+                        startActivity(intent1);
+                    }
+                });
 
                 break;
             case "关于我们":
@@ -96,4 +105,5 @@ public class DataSelfActivity extends AppCompatActivity {
 
 
     }
+
 }

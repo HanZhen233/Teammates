@@ -18,9 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Data.DataSelfActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".HomeSetting.HomeSearchActivity" />
-        <activity android:name=".Compete.CompeteDetailActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
     </application>
 
 </manifest>

@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.chaychan.library.BottomBarItem;
+import com.chaychan.library.BottomBarLayout;
+import com.example.teammates.Data.DataSelfActivity;
 import com.example.teammates.LoginActivity;
 import com.example.teammates.R;
 import com.example.teammates.recycler_item.InfoAdapter;
@@ -26,61 +29,29 @@ import java.util.List;
  * Created by hanzhen on 2018/2/24.
  */
 
-public class MeFragment extends Fragment {
+public class MeFragment extends Fragment implements View.OnClickListener{
     private View view;
 
-    private TextView status;
+    private Button self;
+    private Button set;
+    private Button us;
 
-    private List<Information> info=new ArrayList<>();
-
-    private void initInfo(){
-        Information information=new Information();
-        information.setName("个人信息");
-        info.add(information);
-
-        Information information1=new Information();
-        information1.setName("设置");
-        info.add(information1);
-
-        Information information2=new Information();
-        information2.setName("关于我们");
-        info.add(information2);
-
-        Information information3=new Information();
-        information3.setName("凑");
-        info.add(information3);
-
-        Information information4=new Information();
-        information4.setName("字");
-        info.add(information4);
-
-        Information information5=new Information();
-        information5.setName("数");
-        info.add(information5);
-
-        Information information6=new Information();
-        information6.setName("的");
-        info.add(information6);
-
-
-    }
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_me,container,false);
-        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.recycler_view);
+        self=(Button)view.findViewById(R.id.self);
+        set=(Button)view.findViewById(R.id.set);
+        us=(Button)view.findViewById(R.id.us);
         ImageView user=(ImageView)view.findViewById(R.id.image_icon);
-        status=(TextView)view.findViewById(R.id.status);
 
 
-        initInfo();
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
-        InfoAdapter adapter=new InfoAdapter(info);
-        recyclerView.setAdapter(adapter);
 
+        self.setOnClickListener(this);
+        set.setOnClickListener(this);
+        us.setOnClickListener(this);
         user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +60,7 @@ public class MeFragment extends Fragment {
             }
         });
 
+
         return view;
     }
 
@@ -96,5 +68,24 @@ public class MeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
+    }
+
+    public void onClick(View v){
+        Intent intent=new Intent(getContext(), DataSelfActivity.class);
+        switch (v.getId()){
+            case R.id.self:
+                intent.putExtra("key",self.getText().toString());
+                break;
+            case R.id.set:
+                intent.putExtra("key",set.getText().toString());
+
+                break;
+            case R.id.us:
+                intent.putExtra("key",us.getText().toString());
+                break;
+
+        }
+        startActivity(intent);
     }
 }
