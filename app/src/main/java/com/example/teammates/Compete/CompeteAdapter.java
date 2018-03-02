@@ -76,6 +76,7 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
 //                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
 //            }
 //        });
+        
         return holder;
     }
 
@@ -85,7 +86,7 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
         Glide.with(mContext).load(compete.getImageId()).into(holder.competeImage);
 //        holder.competeImage.setImageResource(compete.getImageId());
     }
-    
+
     @Override
     public int getItemCount() {
         return competes.size();
