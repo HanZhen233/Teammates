@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Data.DataSelfActivity" />
+        <activity android:name=".Compete.CompeteDetailActivity"/>
         <activity android:name=".RegisterActivity"></activity>
     </application>
 
