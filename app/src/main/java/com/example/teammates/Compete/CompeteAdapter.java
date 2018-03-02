@@ -59,6 +59,23 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
                 mContext.startActivity(intent);
             }
         });
+
+//        holder.competeView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int position=holder.getAdapterPosition();
+//                Compete compete=competes.get(position);
+//                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        holder.competeImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int position=holder.getAdapterPosition();
+//                Compete compete=competes.get(position);
+//                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return holder;
     }
 
