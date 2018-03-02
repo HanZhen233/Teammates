@@ -60,8 +60,6 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
             }
         });
 
-
-
 //        holder.competeView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
