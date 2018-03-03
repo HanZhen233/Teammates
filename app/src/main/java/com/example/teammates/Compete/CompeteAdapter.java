@@ -76,7 +76,6 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
 //                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
 //            }
 //        });
-        
         return holder;
     }
 
