@@ -1,4 +1,4 @@
-package com.example.teammates.Data;
+package com.example.teammates.DataActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

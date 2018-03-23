@@ -44,7 +44,9 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Toolbar();
-        initCompete();
+        if(competeList.size()>2);
+        else
+            initCompete();
         CompeteRecyclerView();
         refresh();
         refreshCompete();
@@ -64,16 +66,16 @@ public class HomeFragment extends Fragment {
         });
     }
     private void initCompete(){
-        for(int i=0;i<5;i++){
+
             Compete compete=new Compete("中国计算机设计大赛",R.drawable.p1);
             competeList.add(compete);
-        }
+
     }
 
     //设置滚动图片
     private void CompeteRecyclerView(){
         RecyclerView recyclerView=(RecyclerView) getActivity().findViewById(R.id.home_recyclerview);
-        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),1);
+        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),2);
         recyclerView.setLayoutManager(layoutManager);
         CompeteAdapter adapter=new CompeteAdapter(competeList);
         recyclerView.setAdapter(adapter);

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
-import com.example.teammates.Data.MessageActivity;
+import com.example.teammates.DataActivities.MessageActivity;
 import com.example.teammates.R;
 
 import java.util.List;

@@ -32,7 +32,7 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
         public ViewHolder(View view) {
             super(view);
             cardView=(CardView) view;
-            competeView=view;
+            competeView=view; 
             competeName=(TextView) view.findViewById(R.id.compete_name);
             competeImage=(ImageView) view.findViewById(R.id.compete_image);
         }

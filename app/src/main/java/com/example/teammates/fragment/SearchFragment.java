@@ -1,15 +1,17 @@
 package com.example.teammates.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.example.teammates.R;
+import com.example.teammates.search_part.SearchEmployeeActivity;
+import com.example.teammates.search_part.SearchEmployerActivity;
 
 /**
  * Created by hanzhen on 2018/2/24.
@@ -17,7 +19,8 @@ import com.example.teammates.R;
 
 public class SearchFragment extends Fragment {
     private View view;
-    private Button button;
+    private LinearLayout employer;
+    private LinearLayout employee;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,11 +31,20 @@ public class SearchFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        button=(Button)getActivity().findViewById(R.id.button2);
-        button.setOnClickListener(new View.OnClickListener() {
+        employer=(LinearLayout) view.findViewById(R.id.Employer);
+        employee=(LinearLayout) view.findViewById(R.id.Employee);
+        employer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"success",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getContext(), SearchEmployerActivity.class);
+                startActivity(intent);
+            }
+        });
+        employee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getContext(), SearchEmployeeActivity.class);
+                startActivity(intent);
             }
         });
     }

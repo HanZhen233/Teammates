@@ -1,4 +1,4 @@
-package com.example.teammates.Data;
+package com.example.teammates.DataActivities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.teammates.Data.Person;
 import com.example.teammates.R;
 import com.example.teammates.RegisterActivity;
 
@@ -20,7 +21,7 @@ public class DataSelfActivity extends AppCompatActivity {
     private LinearLayout self_information;
     private LinearLayout setting;
     private LinearLayout aboutUs;
-
+//
     private TextView name_information;
     private TextView university_information;
     private TextView school_information;

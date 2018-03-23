@@ -17,9 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Data.DataSelfActivity" />
-        <activity android:name=".Compete.CompeteDetailActivity"/>
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".DataActivities.DataSelfActivity" />
+        <activity android:name=".Compete.CompeteDetailActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".search_part.SearchEmployerActivity" />
+        <activity android:name=".search_part.SearchEmployeeActivity"></activity>
     </application>
 
 </manifest>
