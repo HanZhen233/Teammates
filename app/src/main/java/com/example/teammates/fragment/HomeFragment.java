@@ -44,9 +44,12 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Toolbar();
-        if(competeList.size()>2);
-        else
+        if(competeList.isEmpty())
             initCompete();
+        else{
+            competeList.clear();
+            initCompete();
+        }
         CompeteRecyclerView();
         refresh();
         refreshCompete();
