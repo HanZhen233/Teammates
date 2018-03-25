@@ -1,5 +1,5 @@
+/*比赛项目的搜索*/
 package com.example.teammates.HomeSetting;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 

@@ -21,7 +21,8 @@
         <activity android:name=".Compete.CompeteDetailActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".search_part.SearchEmployerActivity" />
-        <activity android:name=".search_part.SearchEmployeeActivity"></activity>
+        <activity android:name=".search_part.SearchEmployeeActivity"/>
+        <activity android:name=".HomeSetting.HomeSearchActivity"/>
     </application>
 
 </manifest>
