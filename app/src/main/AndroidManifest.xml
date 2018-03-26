@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.teammates">
 
     <application
@@ -24,5 +25,9 @@
         <activity android:name=".search_part.SearchEmployeeActivity"/>
         <activity android:name=".HomeSetting.HomeSearchActivity"/>
     </application>
+
+    <uses-sdk tools:overrideLibrary="scut.carson_ho.searchview"/>
+    <!--为解决添加的库兼容的最低版本与项目设置的版本不同-->
+
 
 </manifest>

@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import com.example.teammates.fragment.MessageFragment;
 import com.example.teammates.fragment.HomeFragment;
 import com.example.teammates.fragment.MeFragment;
 import com.example.teammates.fragment.SearchFragment;
+import com.githang.statusbar.StatusBarCompat;
 
 import org.litepal.tablemanager.Connector;
 
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_main);
-
+        StatusBarCompat.setStatusBarColor(this,	getResources().getColor(R.color.colorPrimaryDark),true);
         initView();
         initData();
         initListener();
