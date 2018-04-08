@@ -1,5 +1,6 @@
 Android App
 关于一些类的大致功能
+
 在Compete包中，是关于 比赛的类，
 
 Data包中是各种数据类，表，，Competition是打算新建的比赛的表
