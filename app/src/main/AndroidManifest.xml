@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.teammates">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -19,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DataActivities.DataSelfActivity" />
-        <activity android:name=".Compete.CompeteDetailActivity" />
+        <activity android:name=".Compete.CompetitionDetailActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".search_part.SearchEmployerActivity" />
         <activity android:name=".search_part.SearchEmployeeActivity"/>

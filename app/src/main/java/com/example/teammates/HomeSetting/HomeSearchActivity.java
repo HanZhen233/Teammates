@@ -18,7 +18,7 @@ public class HomeSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_search);
 //        绑定组件
         searchView=(SearchView) findViewById(R.id.carson_search_view);
-
+//        searchView
 //        设置点击键盘上的搜索按键后的操作（通过回调接口）
 //        参数 = 搜索框输入的内容
         searchView.setOnClickSearch(new ICallBack() {
@@ -35,7 +35,5 @@ public class HomeSearchActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

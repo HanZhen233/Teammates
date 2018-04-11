@@ -4,11 +4,11 @@ package com.example.teammates.Compete;
  * Created by Echo on 2018/2/27.
  */
 
-public class Compete {
+public class Competition {
     private String name;
     private int imageId;
 
-    public Compete(String name, int imageId){
+    public Competition(String name, int imageId){
         this.name=name;
         this.imageId=imageId;
     }

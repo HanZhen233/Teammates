@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         setContentView(R.layout.activity_main);
-        StatusBarCompat.setStatusBarColor(this,	getResources().getColor(R.color.colorPrimaryDark),true);
+        StatusBarCompat.setStatusBarColor(this,	getResources().getColor(
+                R.color.colorPrimaryDark),true);//设置系统状态栏颜色
         initView();
         initData();
         initListener();

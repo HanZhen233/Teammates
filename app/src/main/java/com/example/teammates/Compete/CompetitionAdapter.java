@@ -19,9 +19,9 @@ import java.util.List;
  * Created by Echo on 2018/2/27.
  */
 
-public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHolder> {
+public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.ViewHolder> {
     private Context mContext;
-    private List<Compete> competes;
+    private List<Competition> competes;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
@@ -38,7 +38,7 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
         }
     }
 
-    public CompeteAdapter(List<Compete> competeList){
+    public CompetitionAdapter(List<Competition> competeList){
         competes=competeList;
     }
     @Override
@@ -52,38 +52,21 @@ public class CompeteAdapter extends RecyclerView.Adapter<CompeteAdapter.ViewHold
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
-                Compete compete=competes.get(position);
-                Intent intent=new Intent(mContext,CompeteDetailActivity.class);
-                intent.putExtra(CompeteDetailActivity.Compete_Name,compete.getClass());
-                intent.putExtra(CompeteDetailActivity.Compete_Image_Id,compete.getImageId());
+                Competition compete=competes.get(position);
+                Intent intent=new Intent(mContext,CompetitionDetailActivity.class);
+                intent.putExtra(CompetitionDetailActivity.Compete_Name,compete.getName());
+                intent.putExtra(CompetitionDetailActivity.Compete_Image_Id,compete.getImageId());
                 mContext.startActivity(intent);
             }
         });
 
-//        holder.competeView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position=holder.getAdapterPosition();
-//                Compete compete=competes.get(position);
-//                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        holder.competeImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position=holder.getAdapterPosition();
-//                Compete compete=competes.get(position);
-//                Toast.makeText(v.getContext(),"you clicked view"+compete.getName(),Toast.LENGTH_SHORT).show();
-//            }
-//        });
         return holder;
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Compete compete=competes.get(position);
+        Competition compete=competes.get(position);
         holder.competeName.setText(compete.getName());
         Glide.with(mContext).load(compete.getImageId()).into(holder.competeImage);
-//        holder.competeImage.setImageResource(compete.getImageId());
     }
 
     @Override

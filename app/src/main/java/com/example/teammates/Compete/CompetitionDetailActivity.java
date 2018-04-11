@@ -5,17 +5,24 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
+import com.example.teammates.comment.Comment;
+import com.example.teammates.comment.CommentAdapter;
 
-public class CompeteDetailActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class CompetitionDetailActivity extends AppCompatActivity {
     public static final String Compete_Name="compete_name";
     public static final String Compete_Image_Id="compete_image_id";
+    private List<Comment> commentList=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +42,20 @@ public class CompeteDetailActivity extends AppCompatActivity {
             collapsingToolbar.setTitle(competeName);
         }
         Glide.with(this).load(competeImageId).into(competeImage);
-        String competeContent=generateCompeteContent(competeName);
+        String competeContent=generateCompeteContent(competeName,competeImageId);
         competeContentText.setText(competeContent);
+
+        //设置评论
+        initComment();
+        RecyclerView recyclerView=(RecyclerView) findViewById(R.id.comment_view);
+        LinearLayoutManager layoutManager=new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        CommentAdapter adapter=new CommentAdapter(commentList);
+        recyclerView.setAdapter(adapter);
     }
 
-    private String generateCompeteContent(String competeName){
-        return competeName+"的介绍";
+    private String generateCompeteContent(String competeName,int competeImageId){
+        return "编号为"+competeImageId+"\n"+competeName+"的介绍";
     }
 
     @Override
@@ -52,4 +67,12 @@ public class CompeteDetailActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    private void initComment(){
+        for(int i=0;i<3;i++){
+            Comment comment=new Comment("张三","2018/4/11","寻找一个擅长PS的队友。凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数凑字数");
+            commentList.add(comment);
+        }
+    }
 }
+
+

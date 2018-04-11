@@ -13,14 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.teammates.Compete.Compete;
-import com.example.teammates.Compete.CompeteAdapter;
+import com.example.teammates.Compete.Competition;
+import com.example.teammates.Compete.CompetitionAdapter;
 import com.example.teammates.HomeSetting.HomeSearchActivity;
 import com.example.teammates.R;
 
@@ -33,7 +29,7 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
     private View view;
-    private List<Compete> competeList=new ArrayList<>();
+    private List<Competition> competeList=new ArrayList<>();
     private SwipeRefreshLayout swipeRefresh;
     @Nullable
     @Override
@@ -46,7 +42,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         Toolbar();
         if(competeList.isEmpty())
             initCompete();
@@ -74,17 +69,20 @@ public class HomeFragment extends Fragment {
     }
     private void initCompete(){
 
-            Compete compete=new Compete("中国计算机设计大赛",R.drawable.p1);
-            competeList.add(compete);
+            Competition compete=new Competition("中国计算机设计大赛",R.drawable.p1);
+            for(int i=0;i<20;i++){
+                competeList.add(compete);
+            }
+
 
     }
 
     //设置滚动图片
     private void CompeteRecyclerView(){
         RecyclerView recyclerView=(RecyclerView) getActivity().findViewById(R.id.home_recyclerview);
-        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),2);
+        GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),1);
         recyclerView.setLayoutManager(layoutManager);
-        CompeteAdapter adapter=new CompeteAdapter(competeList);
+        CompetitionAdapter adapter=new CompetitionAdapter(competeList);
         recyclerView.setAdapter(adapter);
     }
     private void refresh(){
