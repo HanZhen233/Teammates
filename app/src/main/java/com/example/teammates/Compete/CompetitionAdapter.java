@@ -21,7 +21,7 @@ import java.util.List;
 
 public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.ViewHolder> {
     private Context mContext;
-    private List<Competition> competes;
+    private List<Competition1> competes;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
@@ -38,7 +38,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
         }
     }
 
-    public CompetitionAdapter(List<Competition> competeList){
+    public CompetitionAdapter(List<Competition1> competeList){
         competes=competeList;
     }
     @Override
@@ -52,7 +52,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
-                Competition compete=competes.get(position);
+                Competition1 compete=competes.get(position);
                 Intent intent=new Intent(mContext,CompetitionDetailActivity.class);
                 intent.putExtra(CompetitionDetailActivity.Compete_Name,compete.getName());
                 intent.putExtra(CompetitionDetailActivity.Compete_Image_Id,compete.getImageId());
@@ -64,7 +64,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Competition compete=competes.get(position);
+        Competition1 compete=competes.get(position);
         holder.competeName.setText(compete.getName());
         Glide.with(mContext).load(compete.getImageId()).into(holder.competeImage);
     }
