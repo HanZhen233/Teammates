@@ -3,13 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="队友来了"
-        android:textSize="20sp"
-        />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,12 +11,25 @@
         android:id="@+id/Employer"
         android:orientation="vertical"
         >
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:src="@drawable/find_team"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="队友来了"
+            android:textSize="20sp"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:text="找队伍：当你需要寻找一支强大的队伍队伍或者无聊想看看其他人有什么好项目时，click me"
+            android:layout_margin="10dp"
+            android:text="当你需要寻找一支强大的队伍队伍或者无聊想看看其他人有什么好项目时，click me!"
             />
 
     </LinearLayout>
@@ -36,12 +43,26 @@
 
         >
 
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:src="@drawable/find_teammates"
+            android:layout_gravity="center" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="队友来了"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textSize="20sp"
-            android:text="招人啦：比赛想找人合作？有异想天开的想法，却不能独立实现？click me，一起发起项目吧"
+            android:layout_margin="10dp"
+            android:text="招人啦：比赛想找人合作？有异想天开的想法，却不能独立实现？click me，一起发起项目吧!"
             />
 
     </LinearLayout>

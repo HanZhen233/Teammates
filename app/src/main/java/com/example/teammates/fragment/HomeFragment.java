@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.teammates.adapter.CompetitionAdapter;
+import com.example.teammates.competition.CompetitionDetailActivity;
 import com.example.teammates.competition.CompetitionSearchActivity;
 import com.example.teammates.R;
 import com.example.teammates.db.commentInfo.CommentInfo;

@@ -16,7 +16,7 @@ import java.util.List;
  * 找队友
  */
 
-public class RequireComAdapter extends RecyclerView.Adapter<RequireComAdapter.ViewHolder> {
+public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHolder> {
 
     private List<TeamInfo> mComment;
 
@@ -25,14 +25,15 @@ public class RequireComAdapter extends RecyclerView.Adapter<RequireComAdapter.Vi
         TextView edit_time;
         TextView content;
 
+
         public ViewHolder(View view) {
             super(view);
-            user_name=(TextView) view.findViewById(R.id.competition_name);
+            user_name=(TextView) view.findViewById(R.id.name);
             edit_time=(TextView) view.findViewById(R.id.edit_time);
             content=(TextView) view.findViewById(R.id.content);
         }
     }
-    public RequireComAdapter(List<TeamInfo> commentList){
+    public TeamInfoAdapter(List<TeamInfo> commentList){
         mComment=commentList;
     }
     @Override

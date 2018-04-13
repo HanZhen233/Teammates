@@ -8,10 +8,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,19 +19,18 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
 import com.example.teammates.db.teamInfo.TeamInfo;
-import com.example.teammates.adapter.RequireComAdapter;
+import com.example.teammates.adapter.TeamInfoAdapter;
 import com.example.teammates.db.competitionInfo.CompetitionWholeInfo;
 import com.example.teammates.util.CompetitionInfoThread;
+import com.example.teammates.util.TeamInfoThread;
 import com.google.gson.Gson;
 
-import org.litepal.crud.DataSupport;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -41,13 +40,13 @@ import okhttp3.Response;
 public class CompetitionDetailActivity extends AppCompatActivity {
     public static final String Compete_Name="compete_name";
     public static final String Compete_Image_Id="compete_image_id";
-    private List<TeamInfo> commentList=new ArrayList<>();
+    private List<TeamInfo> teamInfoList=new ArrayList<>();
     private TextView competeContentText;
+    private TextView test;
     String competitionName=null;
     int competeImageId;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
-    private List<TeamInfo> teamInfoList;
 
     private Handler handler = new Handler(){
         public void handleMessage(Message msg) {
@@ -57,10 +56,13 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                 }
                 case 1:{
                     String competitionWholeInfo=(String) msg.obj;
-                    competeContentText.setText(competitionWholeInfo);
+                    showResponse(parseJSONCompetition(competitionWholeInfo));
+//
+//                    competeContentText.setText(competitionWholeInfo);
                 }
                 case 2:{
-
+                    String teamInfo=(String) msg.obj;
+                    parseJSONTeamInfo(teamInfo);
                 }
                 case 3:{
 
@@ -83,6 +85,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                 findViewById(R.id.collapsing_toolbar);
         ImageView competeImage=(ImageView) findViewById(R.id.compete_image_view);
         competeContentText=(TextView) findViewById(R.id.compete_content_text);
+        test=(TextView) findViewById(R.id.test);
         setSupportActionBar(toolbar);
         ActionBar actioinBar=getSupportActionBar();
         if(actioinBar!=null){
@@ -91,23 +94,10 @@ public class CompetitionDetailActivity extends AppCompatActivity {
         }
         Glide.with(this).load(competeImageId).into(competeImage);
         String competeContent=generateCompeteContent(competitionName,competeImageId);
-
-        //接收比赛信息介绍
-        //sendrequestWithOkHttp();
-        //接收比赛队伍信息
-        //Log.d("Competition","Detail3");
-        //queryTeams();
-        //Log.d("Competition","Detail4");
-//        competeContentText.setText(competeContent);
-
-        //设置评论
-//        initComment();
-
-
         recyclerView=(RecyclerView) findViewById(R.id.comment_view);
-        layoutManager=new LinearLayoutManager(this);
+        GridLayoutManager layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
-        RequireComAdapter adapter=new RequireComAdapter(commentList);
+        TeamInfoAdapter adapter=new TeamInfoAdapter(teamInfoList);
         recyclerView.setAdapter(adapter);
 
         //悬浮按钮
@@ -122,55 +112,13 @@ public class CompetitionDetailActivity extends AppCompatActivity {
 
 
         String[] array={competitionName};
-        
-//        CompetitionInfoThread competitionInfoThread = new CompetitionInfoThread(this,handler,array);
-        CompetitionInfoThread competitionInfoThread = new CompetitionInfoThread(this,handler,null);
+
+        CompetitionInfoThread competitionInfoThread = new CompetitionInfoThread(this,handler,array);
         new Thread(competitionInfoThread).start();
+        TeamInfoThread teamInfoThread = new TeamInfoThread(this,handler,array);
+        new Thread(teamInfoThread).start();
 
     }
-//    private  void queryTeams(){
-//        teamInfoList= DataSupport.findAll(TeamInfo.class);
-//        if(teamInfoList.size()>0){
-//            commentList.clear();
-//            Log.d("Competition","Detail1");
-//            for (TeamInfo team:teamInfoList){
-//                commentList.add(team);
-//                Log.d("Competition","Detail2");
-//                Log.d("证明",team.gettTamInfoComments()+team.getCompetitionName());
-//            }
-//        }else{
-//            String address="http://106.14.199.25:9091/teamInfo/browseTeamInfo";
-//            queryFormServer(address);
-//        }
-//    }
-//    private void queryFormServer(String address){
-//        HttpUtil.sendOkHttpRequest(address, new Callback() {
-//            @Override
-//            public void onFailure(Call call, IOException e){
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-//
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                String responseText=response.body().string();
-//                boolean result=false;
-//                result= Utility.handleProvinceResponse(responseText);
-//                if (result){
-//                    runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            queryTeams();
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//    }
 
     private String generateCompeteContent(String competeName,int competeImageId){
         return "编号为"+competeImageId+"\n"+competeName+"的介绍";
@@ -191,7 +139,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
 //            TeamInfoComment team=new TeamInfoComment("1","content","Echo","Time");
 //            comment.add(team);
 //            TeamInfo requireCom=new TeamInfo("计算机","国家","110","1","Echo","内容","anqiu",comment,"1","1");
-            commentList.add(requireCom);
+            teamInfoList.add(requireCom);
 //        }
     }
     private void sendrequestWithOkHttp(){
@@ -210,7 +158,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                     Response response=client.newCall(request).execute();
                     String responseData=response.body().string();
 
-                    String content=parseJSONWithGSON(responseData);
+                    String content=parseJSONCompetition(responseData);
                     showResponse(content);
                 }
                 catch (Exception e){
@@ -229,7 +177,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
             }
         });
     }
-    private String parseJSONWithGSON(String jsonDate){
+    private String parseJSONCompetition(String jsonDate){
         String name="";
         Gson gson=new Gson();
         CompetitionWholeInfo competition = gson.fromJson(jsonDate, CompetitionWholeInfo.class);
@@ -239,7 +187,23 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                 "比赛时间：" + competition.getTime() + "\n" +"\n"+
                 "比赛介绍："+"\n" + competition.getIntroduction() + "\n" +"\n"+
                 "比赛链接：" + competition.getLink();
-
+    }
+    private void parseJSONTeamInfo(String jsonDate){
+        try{
+            JSONArray jsonArray=new JSONArray(jsonDate);
+            for (int i=0;i<jsonArray.length();i++){
+                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                String name=jsonObject.getString("initiator");
+                String content=jsonObject.getString("introduction");
+                String time=jsonObject.getString("time");
+                String competitionName=jsonObject.getString("competitionName");
+                TeamInfo teamInfo=new TeamInfo(null,competitionName,null,null,name,
+                        content,null,null,time,null);
+                teamInfoList.add(teamInfo);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
