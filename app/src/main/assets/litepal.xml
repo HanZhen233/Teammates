@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <litepal>
     <dbname value="Information">
-        <version value="3"/>
+        <version value="5"/>
         <list>
-            <mapping class="com.example.teammates.db.user.User"></mapping>
-            <mapping class="com.example.teammates.Data.Message"></mapping>
-            <mapping class="com.example.teammates.Data.Competition"></mapping>
-            <mapping class="com.example.teammates.Data.Projection"></mapping>
-            <mapping class="com.example.teammates.Data.Person_extend"></mapping>
-            <mapping class="com.example.teammates.db.teamInfo"></mapping>
+            <mapping class="com.example.teammates.Data.User"></mapping>
         </list>
     </dbname>
+
 </litepal>

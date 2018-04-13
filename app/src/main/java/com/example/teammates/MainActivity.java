@@ -22,12 +22,14 @@ import android.widget.TextView;
 
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
+import com.example.teammates.Data.User;
 import com.example.teammates.fragment.MessageFragment;
 import com.example.teammates.fragment.HomeFragment;
 import com.example.teammates.fragment.MeFragment;
 import com.example.teammates.fragment.SearchFragment;
 import com.githang.statusbar.StatusBarCompat;
 
+import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
 import java.util.ArrayList;
@@ -65,7 +67,9 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onResume(){
         super.onResume();
+
         if(getIntent()!=null){
+
             Position=getIntent().getIntExtra("position",0);
         }
     }

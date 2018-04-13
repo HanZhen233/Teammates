@@ -11,17 +11,21 @@ import android.widget.TextView;
 import com.example.teammates.db.user.User;
 import com.example.teammates.R;
 import com.example.teammates.RegisterActivity;
+import com.example.teammates.okhttp.ExchangeMessage;
 
 import org.litepal.crud.DataSupport;
 
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class DataSelfActivity extends AppCompatActivity {
 
    // private LinearLayout self_information;//布局文件
 //
     private TextView name_information;
-    private TextView pass_information;
     private TextView sex_information;
     private TextView university_information;
     private TextView major_information;
@@ -36,14 +40,16 @@ public class DataSelfActivity extends AppCompatActivity {
         //self_information=(LinearLayout)findViewById(R.id.self_information);//布局文件
 
         name_information=(TextView)findViewById(R.id.name);
-        pass_information=(TextView)findViewById(R.id.password);
+       // pass_information=(TextView)findViewById(R.id.password);
         sex_information=(TextView)findViewById(R.id.sex) ;
         university_information=(TextView)findViewById(R.id.university);
         major_information=(TextView)findViewById(R.id.major);
         technology_information=(TextView)findViewById(R.id.technology);
         phone_information=(TextView)findViewById(R.id.phone);
         qq_information=(TextView)findViewById(R.id.qq);
-        email_information=(TextView)findViewById(R.id.email);
+
+        email_information=(TextView)findViewById(R.id.mail);
+
         update=(Button)findViewById(R.id.update);
 
     }
@@ -57,17 +63,9 @@ public class DataSelfActivity extends AppCompatActivity {
 
         switch (content){
             case "个人信息":
-            List<User> users=DataSupport.findAll(User.class);
-            for(User u:users){
-                Log.d("users", "onCreate: "+u.getName());
-                Log.d("users", "onCreate: "+u.getSex());
-                Log.d("users", "onCreate: "+u.getUniversity());
-                Log.d("users", "onCreate: "+u.getMajor());
-                Log.d("users", "onCreate: "+u.getTechnology());
-                Log.d("users", "onCreate: "+u.getPhone());
-                Log.d("users", "onCreate: "+u.getQq());
-                Log.d("users", "onCreate: "+u.getEmail());
-            }
+
+
+
             User user = DataSupport.findFirst(User.class);
             if(user==null) break;
             name_information.setText(user.getName());
@@ -78,7 +76,9 @@ public class DataSelfActivity extends AppCompatActivity {
             technology_information.setText(user.getTechnology());
             phone_information.setText(user.getPhone());
             qq_information.setText(user.getQq());
-            email_information.setText(user.getEmail());
+
+            email_information.setText(user.getMail());
+                Log.d("mail", email_information.getText().toString());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -95,6 +95,20 @@ public class DataSelfActivity extends AppCompatActivity {
             case "注销":
                 //status.setText("未登录");  属于更改 其他活动中的ui元素
                 //状态检测  还没做
+
+                ExchangeMessage.getLogout(new okhttp3.Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+
+                    }
+                });
+
+
                 DataSupport.deleteAll(User.class);
                 name_information.setText("");
                 sex_information.setText("");

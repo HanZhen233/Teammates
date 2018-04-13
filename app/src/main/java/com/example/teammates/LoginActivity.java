@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.teammates.Data.User;
 import com.example.teammates.okhttp.ExchangeMessage;
+import com.example.teammates.okhttp.URL;
+import com.google.gson.Gson;
+
+import org.litepal.crud.DataSupport;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Response;
 
 public class LoginActivity extends BaseActivity {
 
@@ -64,31 +75,52 @@ public class LoginActivity extends BaseActivity {
                 String password = passwordEdit.getText().toString();
                 // 如果账号是admin且密码是123456，就认为登录成功
 
-                ExchangeMessage.sendrequestWithOkHttp(account,password);//发送信息到后台  并获取个人信息
+                ExchangeMessage.postLogin(account,password,new okhttp3.Callback(){
 
-//                if (account.equals("admin") && password.equals("123456")) {
-//                    editor = pref.edit();
-//                    if (rememberPass.isChecked()) { // 检查复选框是否被选中
-//                        editor.putBoolean("remember_password", true);
-//                        editor.putString("account", account);
-//                        editor.putString("password", password);
-//                    } else {
-//                        editor.clear();
-//                    }
-//                    editor.apply();
-//
+                    public void onFailure(Call call, IOException e) {
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(LoginActivity.this,"网络连接失败",Toast.LENGTH_SHORT).show();
 
-                  //  status_in.setVisibility(View.VISIBLE);
-                    //status_out.setVisibility(View.GONE);
+                            }
+                        });
 
-                    changeInfo();//发消息给后台，然后更改本地数据库中的个人信息，即Person表
+                    }
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    @Override
+                    public void onResponse(Call call,Response response) throws IOException {
+                        final String backData=response.body().string();
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(LoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
+                                Log.d("login", backData);
+                            }
+                        });
+                    }
+                });
+                ExchangeMessage.getLogin(new okhttp3.Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
 
-                    Toast.makeText(LoginActivity.this, "account or password is invalid",
-                            Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                    //还是返回的  登陆html。。。
+                        Log.d("get_login", response.body().string());
+                        Gson gson=new Gson();
+                        DataSupport.deleteAll(User.class);
+                        User user=gson.fromJson(response.body().string(),User.class);
+                        user.save();
+                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                    }
+
+                });
 
             }
         });
