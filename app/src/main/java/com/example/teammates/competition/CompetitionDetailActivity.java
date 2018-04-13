@@ -45,7 +45,6 @@ public class CompetitionDetailActivity extends AppCompatActivity {
     private TextView test;
     String competitionName=null;
     int competeImageId;
-    RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
 
     private Handler handler = new Handler(){
@@ -57,11 +56,10 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                 case 1:{
                     String competitionWholeInfo=(String) msg.obj;
                     showResponse(parseJSONCompetition(competitionWholeInfo));
-//
-//                    competeContentText.setText(competitionWholeInfo);
                 }
                 case 2:{
                     String teamInfo=(String) msg.obj;
+//                    competeContentText.setText(teamInfo);
                     parseJSONTeamInfo(teamInfo);
                 }
                 case 3:{
@@ -85,7 +83,6 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                 findViewById(R.id.collapsing_toolbar);
         ImageView competeImage=(ImageView) findViewById(R.id.compete_image_view);
         competeContentText=(TextView) findViewById(R.id.compete_content_text);
-        test=(TextView) findViewById(R.id.test);
         setSupportActionBar(toolbar);
         ActionBar actioinBar=getSupportActionBar();
         if(actioinBar!=null){
@@ -94,7 +91,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
         }
         Glide.with(this).load(competeImageId).into(competeImage);
         String competeContent=generateCompeteContent(competitionName,competeImageId);
-        recyclerView=(RecyclerView) findViewById(R.id.comment_view);
+        RecyclerView recyclerView=(RecyclerView) findViewById(R.id.comment_view);
         GridLayoutManager layoutManager=new GridLayoutManager(this,1);
         recyclerView.setLayoutManager(layoutManager);
         TeamInfoAdapter adapter=new TeamInfoAdapter(teamInfoList);

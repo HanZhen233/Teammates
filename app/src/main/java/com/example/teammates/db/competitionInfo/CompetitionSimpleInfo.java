@@ -6,11 +6,11 @@ package com.example.teammates.db.competitionInfo;
 
 public class CompetitionSimpleInfo {
     private String name;
-    private int imageId;
+    private int id;
 
-    public CompetitionSimpleInfo(String name, int imageId){
+    public CompetitionSimpleInfo(String name, int id){
         this.name=name;
-        this.imageId=imageId;
+        this.id=id;
     }
 
     public String getName() {
@@ -20,11 +20,11 @@ public class CompetitionSimpleInfo {
         this.name=name;
     }
 
-    public int getImageId(){
-        return imageId;
+    public int getId(){
+        return id;
     }
-    public void setImageId(int imageId){
-        this.imageId=imageId;
+    public void setId(int id){
+        this.id=id;
     }
 
 }

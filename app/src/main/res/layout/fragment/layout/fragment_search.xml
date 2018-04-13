@@ -12,8 +12,8 @@
         android:orientation="vertical"
         >
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
             android:src="@drawable/find_team"
             android:layout_gravity="center" />
         <TextView
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="队友来了"
-            android:textSize="20sp"
+            android:textSize="25sp"
             />
         <TextView
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
             android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_margin="10dp"
-            android:text="当你需要寻找一支强大的队伍队伍或者无聊想看看其他人有什么好项目时，click me!"
+            android:text="当你需要寻找一支强大的队伍或者无聊想看看其他人有什么好项目时，click me!"
             />
 
     </LinearLayout>
@@ -40,21 +40,18 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="1"
-
         >
-
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="160dp"
+            android:layout_width="wrap_content"
+            android:layout_height="130dp"
             android:src="@drawable/find_teammates"
             android:layout_gravity="center" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="队友来了"
-            android:textSize="20sp"
-            android:layout_marginBottom="10dp"
+            android:text="发起队伍"
+            android:textSize="25sp"
             />
         <TextView
             android:layout_width="match_parent"
@@ -62,7 +59,7 @@
             android:layout_gravity="center"
             android:textSize="20sp"
             android:layout_margin="10dp"
-            android:text="招人啦：比赛想找人合作？有异想天开的想法，却不能独立实现？click me，一起发起项目吧!"
+            android:text="比赛想找人合作？有异想天开的想法，却不能独立实现？click me，一起发起项目吧!"
             />
 
     </LinearLayout>

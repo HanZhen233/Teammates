@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.teammates.R;
+import com.example.teammates.competition.AddTeamActivity;
+import com.example.teammates.competition.CompetitionSearchActivity;
 import com.example.teammates.search_part.SearchEmployeeActivity;
 import com.example.teammates.search_part.SearchEmployerActivity;
 
@@ -36,14 +38,14 @@ public class SearchFragment extends Fragment {
         employer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(), SearchEmployerActivity.class);
+                Intent intent=new Intent(getActivity(), CompetitionSearchActivity.class);
                 startActivity(intent);
             }
         });
         employee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getContext(), SearchEmployeeActivity.class);
+                Intent intent=new Intent(getContext(), AddTeamActivity.class);
                 startActivity(intent);
             }
         });

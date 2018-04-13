@@ -58,7 +58,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
                 CompetitionSimpleInfo compete=competes.get(position);
                 Intent intent=new Intent(mContext,CompetitionDetailActivity.class);
                 intent.putExtra(CompetitionDetailActivity.Compete_Name,compete.getName());
-                intent.putExtra(CompetitionDetailActivity.Compete_Image_Id,compete.getImageId());
+                intent.putExtra(CompetitionDetailActivity.Compete_Image_Id,compete.getId());
                 mContext.startActivity(intent);
             }
         });
@@ -69,7 +69,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         CompetitionSimpleInfo compete=competes.get(position);
         holder.competeName.setText(compete.getName());
-        Glide.with(mContext).load(compete.getImageId()).into(holder.competeImage);
+        Glide.with(mContext).load(compete.getId()).into(holder.competeImage);
     }
 
     @Override

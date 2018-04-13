@@ -8,7 +8,7 @@ import scut.carson_ho.searchview.SearchView;
 import scut.carson_ho.searchview.bCallBack;
 import com.example.teammates.R;
 
-public class CompetitionSearchActivity extends AppCompatActivity {
+public class TeammatesFindActivity extends AppCompatActivity {
     private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

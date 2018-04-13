@@ -11,7 +11,8 @@ import android.view.ViewGroup;
 
 import com.example.teammates.R;
 import com.example.teammates.okhttp.ExchangeMessage;
-
+//import com.example.teammates.recycler_item.InfoAdapter;
+//import com.example.teammates.recycler_item.Information;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,20 +22,20 @@ import java.util.List;
  */
 
 public class MessageFragment extends Fragment {
-//    private View view;
-//   // private List<Information> info=new ArrayList<>();
-//
-//
-//    @Nullable
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        view=inflater.inflate(R.layout.fragment_message,container,false);
-//
-//       // ExchangeMessage.getMessage();//发送信息到后台 获取本用户的所有消息，
-//
-//
-//        return view;
-//    }
+    private View view;
+//    private List<Information> info=new ArrayList<>();
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        view=inflater.inflate(R.layout.fragment_message,container,false);
+
+       // ExchangeMessage.getMessage();//发送信息到后台 获取本用户的所有消息，
+
+
+        return view;
+    }
 //
 //    @Override
 //    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -68,6 +69,6 @@ public class MessageFragment extends Fragment {
 //
 //        //需要每次点击这个都要  发送获取消息的
 //    }
-
+//
 
 }

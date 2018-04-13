@@ -53,10 +53,6 @@
                 android:layout_marginTop="35dp"
                 app:cardCornerRadius="4dp">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
                     <TextView
                         android:id="@+id/compete_content_text"
                         android:layout_height="wrap_content"
@@ -65,15 +61,7 @@
                         android:textSize="18sp"
                         android:text="一三四"
                         android:textColor="#FF4F4E4F"/>
-                    <TextView
-                        android:id="@+id/test"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="18sp"
-                        android:text="11111111111111111"
-                        android:textColor="#FF4F4E4F"/>
-                </LinearLayout>
+
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/comment_view"

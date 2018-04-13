@@ -1,5 +1,7 @@
 package com.example.teammates.adapter;
 
+import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +19,11 @@ import java.util.List;
  */
 
 public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHolder> {
-
+    private Context mContext;
     private List<TeamInfo> mComment;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
+        CardView cardView;
         TextView user_name;
         TextView edit_time;
         TextView content;
@@ -28,6 +31,7 @@ public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHo
 
         public ViewHolder(View view) {
             super(view);
+            cardView=(CardView) view;
             user_name=(TextView) view.findViewById(R.id.name);
             edit_time=(TextView) view.findViewById(R.id.edit_time);
             content=(TextView) view.findViewById(R.id.content);
@@ -38,10 +42,13 @@ public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHo
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext())
+        if (mComment==null){
+            mContext=parent.getContext();
+        }
+        View view= LayoutInflater.from(mContext)
                 .inflate(R.layout.userfind_comment,parent,false);
         ViewHolder holder=new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override

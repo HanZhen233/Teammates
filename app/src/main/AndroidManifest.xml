@@ -15,8 +15,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +32,8 @@
         <activity android:name=".search_part.SearchEmployeeActivity" />
         <activity android:name=".competition.CompetitionSearchActivity" />
         <activity android:name=".DataActivities.ChangePasswordActivity" />
+        <activity android:name=".competition.AddTeamActivity" />
+        <activity android:name=".competition.TeammatesFindActivity"></activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.teammates.DataActivities.DataSelfActivity;
 import com.example.teammates.db.user.User;
 import com.example.teammates.okhttp.ExchangeMessage;
 import com.example.teammates.okhttp.URL;
@@ -113,15 +114,22 @@ public class LoginActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException,JsonSyntaxException {
-                        String backdata=response.body().string();
-                        Gson gson=new Gson();
-                        DataSupport.deleteAll(User.class);
-                        Log.d("cookie", backdata);
-                        User user=gson.fromJson(backdata,User.class);
-                        user.save();
-                        Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
-                        finish();
+                        final String backdata=response.body().string();
+//                        Gson gson=new Gson();
+//                        DataSupport.deleteAll(User.class);
+//                        Log.d("cookie", backdata);
+//                        User user=gson.fromJson(backdata,User.class);
+//                        user.save();
+                        LoginActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(LoginActivity.this,"",Toast.LENGTH_SHORT).show();
+                                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        });
+
 
                     }
 

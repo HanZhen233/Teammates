@@ -1,4 +1,5 @@
 package com.example.teammates.fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -119,9 +120,15 @@ public class HomeFragment extends Fragment {
         }).start();
     }
 
-    private void initCompete(String name){
-        CompetitionSimpleInfo competition=new CompetitionSimpleInfo(name,R.drawable.p1);
+    private void initCompete(String name,int id){
+        CompetitionSimpleInfo competition=new CompetitionSimpleInfo(name,getResource(String.valueOf(id)));
         competeList.add(competition);
+    }
+
+    public int getResource(String imageId) {
+        Context ctx = getActivity();
+        int resId = getResources().getIdentifier("p"+imageId, "drawable", ctx.getPackageName());
+        return resId;
     }
 
     private void parseJSONWithGSON(String jsonDate){
@@ -130,7 +137,7 @@ public class HomeFragment extends Fragment {
             {}.getType());
         String x="";
         for(CompetitionSimpleInfo competition:competitionList){
-            initCompete(competition.getName());
+            initCompete(competition.getName(),competition.getId());
             x+=competition.getName();
             System.out.print(competition.getName());
         }
@@ -145,4 +152,5 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 }
