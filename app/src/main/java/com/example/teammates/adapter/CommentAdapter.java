@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.teammates.R;
-import com.example.teammates.db.commentInfo.CommentInfo;
 
+import com.example.teammates.db.commentInfo.CommentInfo;
 import java.util.List;
 
 /**

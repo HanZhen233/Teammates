@@ -8,6 +8,6 @@ import android.widget.AdapterView;
  */
 
 public interface OnItemSelectedListener {
-    void onItemSelected(AdapterView<?> parent, View view,int pos, long id);
+    void onItemSelected(AdapterView<?> parent, View view, int pos, long id);
     void onNothingSelected(AdapterView<?> parent);
 }

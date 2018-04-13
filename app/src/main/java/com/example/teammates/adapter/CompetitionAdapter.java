@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
+
 import com.example.teammates.competition.CompetitionDetailActivity;
 import com.example.teammates.db.competitionInfo.CompetitionSimpleInfo;
 
