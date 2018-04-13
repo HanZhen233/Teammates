@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.teammates.Data.User;
 import com.example.teammates.RegisterActivity;
-import com.example.teammates.db.Competition;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -66,29 +66,29 @@ public class ExchangeMessage {
         }).start();
     }
 
-    public static void getTeam_uName(final String university_name){//由参数决定是 competition还是，user
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient client=new OkHttpClient();
-                try {
-                    RequestBody requestBody=new FormBody.Builder()
-                            .add("university",university_name)
-                            .build();
-                    Request request=new Request.Builder()
-                            .url("106.14.199.25:9091/teamInfo/browseTeamInfo/byUniversity")//
-                            .post(requestBody)
-                            .build();
-                    Response response=client.newCall(request).execute();//登陆的时候 不会一起返回消息 返回 用户的person信息
-                    parseJSONWithGSON(response.body().toString(),"university");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }).start();
-
-    }
+//    public static void getTeam_uName(final String university_name){//由参数决定是 competition还是，user
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                OkHttpClient client=new OkHttpClient();
+//                try {
+//                    RequestBody requestBody=new FormBody.Builder()
+//                            .add("university",university_name)
+//                            .build();
+//                    Request request=new Request.Builder()
+//                            .url("106.14.199.25:9091/teamInfo/browseTeamInfo/byUniversity")//
+//                            .post(requestBody)
+//                            .build();
+//                    Response response=client.newCall(request).execute();//登陆的时候 不会一起返回消息 返回 用户的person信息
+//                    parseJSONWithGSON(response.body().toString(),"university");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }).start();
+//
+//    }
 
     public static void sendrequestWithOkHttp(final String account,final String password){
         new Thread(new Runnable() {
@@ -158,25 +158,25 @@ public class ExchangeMessage {
         }).start();
 
     }
-    public static void getCompetition(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                OkHttpClient client=new OkHttpClient();
-                try {
-
-                    Request request=new Request.Builder()
-                            .url("106.14.199.25:9091/competition/simpleContentAll")//
-                            .build();
-                    Response response=client.newCall(request).execute();
-                    parseJSONWithGSON(response.body().toString(),"competition");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }).start();
-    }
+//    public static void getCompetition(){
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                OkHttpClient client=new OkHttpClient();
+//                try {
+//
+//                    Request request=new Request.Builder()
+//                            .url("106.14.199.25:9091/competition/simpleContentAll")//
+//                            .build();
+//                    Response response=client.newCall(request).execute();
+//                    parseJSONWithGSON(response.body().toString(),"competition");
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        }).start();
+//    }
 
 
     public static List<String> competition_names=new ArrayList<>();
@@ -187,12 +187,12 @@ public class ExchangeMessage {
         String result="";
         switch (param){
             case "competition":
-                List<Competition> competitions=gson.fromJson(jsonDate,new TypeToken<Competition>(){}.getType());
-                List <String>competition_list=new ArrayList<>();
-                for(Competition c:competitions){
-                    competition_list.add(c.getCompetitionName());
-                }
-                competition_names=competition_list;
+//                List<Competition> competitions=gson.fromJson(jsonDate,new TypeToken<Competition>(){}.getType());
+//                List <String>competition_list=new ArrayList<>();
+//                for(Competition c:competitions){
+//                    competition_list.add(c.getCompetitionName());
+//                }
+//                competition_names=competition_list;
                 break;
             case "user":
                 User user =gson.fromJson(jsonDate,User.class);
