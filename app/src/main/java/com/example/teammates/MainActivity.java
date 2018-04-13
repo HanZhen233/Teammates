@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
-import com.example.teammates.Data.User;
+
 import com.example.teammates.fragment.MessageFragment;
 import com.example.teammates.fragment.HomeFragment;
 import com.example.teammates.fragment.MeFragment;

@@ -1,5 +1,4 @@
 package com.example.teammates.util;
-
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -13,7 +12,7 @@ import java.util.TreeMap;
  * Created by Echo on 2018/4/13.
  */
 
-public class CompetitionInfoThread implements Runnable {
+public class TeamInfoThread implements Runnable {
 
     public static final String TAG = CompetitionInfoThread.class.getName();
 
@@ -21,7 +20,7 @@ public class CompetitionInfoThread implements Runnable {
     private Handler mHandler;
     private String[] args;
 
-    public CompetitionInfoThread(Context context, Handler handler,String[] args){
+    public TeamInfoThread(Context context, Handler handler,String[] args){
         mContext = context;
         mHandler = handler;
         this.args = args;
@@ -32,9 +31,9 @@ public class CompetitionInfoThread implements Runnable {
         try{
             BaseHttpClient client = new BaseHttpClient();
             SortedMap<String, String> map = new TreeMap<>();
-            map.put("name",args[0]);
-            String result = client.post("http://106.14.199.25:9091/competition/ContentByname",map);
-            sendMessage(1,result);
+            map.put("competitionName",args[0]);
+            String result = client.post("http://106.14.199.25:9091/teamInfo/browseTeamInfo/byCompetitionName",map);
+            sendMessage(2,result);
         }catch (Exception e){
             Log.d(TAG,e.getMessage());
             sendMessage(0,"Failure");

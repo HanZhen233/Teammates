@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+
 import com.example.teammates.adapter.CompetitionAdapter;
 import com.example.teammates.competition.CompetitionSearchActivity;
 import com.example.teammates.R;
-import com.example.teammates.db.commentInfo.CommentInfo;
 import com.example.teammates.db.competitionInfo.CompetitionSimpleInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

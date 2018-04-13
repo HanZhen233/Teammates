@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.teammates.Data.User;
+import com.example.teammates.db.user.User;
 import com.example.teammates.okhttp.ExchangeMessage;
 import com.example.teammates.okhttp.URL;
 import com.google.gson.Gson;

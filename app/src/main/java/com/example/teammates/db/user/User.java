@@ -33,7 +33,7 @@ public class User extends DataSupport {
         this.qq = qq;
     }
 
-    public String getMmail() {
+    public String getMail() {
         return mail;
     }
 
