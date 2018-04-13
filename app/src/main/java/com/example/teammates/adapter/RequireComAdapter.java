@@ -1,4 +1,4 @@
-package com.example.teammates.comment;
+package com.example.teammates.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.teammates.R;
+import com.example.teammates.db.teamInfo.TeamInfo;
 
 import java.util.List;
 

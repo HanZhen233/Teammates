@@ -3,12 +3,11 @@ package com.example.teammates;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.teammates.Data.User;
+import com.example.teammates.db.user.User;
 import com.example.teammates.okhttp.ExchangeMessage;
 
 import org.litepal.crud.DataSupport;

@@ -1,5 +1,5 @@
 /*比赛项目的搜索*/
-package com.example.teammates.HomeSetting;
+package com.example.teammates.competition;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import scut.carson_ho.searchview.SearchView;
 import scut.carson_ho.searchview.bCallBack;
 import com.example.teammates.R;
 
-public class HomeSearchActivity extends AppCompatActivity {
+public class CompetitionSearchActivity extends AppCompatActivity {
     private SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

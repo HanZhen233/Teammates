@@ -1,4 +1,4 @@
-package com.example.teammates.Compete;
+package com.example.teammates.competition;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -18,15 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
-import com.example.teammates.comment.TeamInfo;
-import com.example.teammates.comment.RequireComAdapter;
-import com.example.teammates.comment.TeamInfo;
-import com.example.teammates.comment.TeamInfoComment;
+import com.example.teammates.db.teamInfo.TeamInfo;
+import com.example.teammates.adapter.RequireComAdapter;
+import com.example.teammates.db.competitionInfo.CompetitionWholeInfo;
 import com.example.teammates.util.CompetitionInfoThread;
-import com.example.teammates.util.HttpUtil;
-import com.example.teammates.util.Utility;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.litepal.crud.DataSupport;
 
@@ -47,7 +43,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
     public static final String Compete_Image_Id="compete_image_id";
     private List<TeamInfo> commentList=new ArrayList<>();
     private TextView competeContentText;
-    String competitionName;
+    String competitionName=null;
     int competeImageId;
     RecyclerView recyclerView;
     LinearLayoutManager layoutManager;
@@ -60,7 +56,8 @@ public class CompetitionDetailActivity extends AppCompatActivity {
                     competeContentText.setText("Failure");
                 }
                 case 1:{
-                    competeContentText.setText("Success");
+                    String competitionWholeInfo=(String) msg.obj;
+                    competeContentText.setText(competitionWholeInfo);
                 }
                 case 2:{
 
@@ -118,60 +115,62 @@ public class CompetitionDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1=new Intent(CompetitionDetailActivity.this,AddFindInfo.class);
+                Intent intent1=new Intent(CompetitionDetailActivity.this,AddTeamActivity.class);
                 startActivity(intent1);
             }
         });
 
 
-
+        String[] array={competitionName};
+        
+//        CompetitionInfoThread competitionInfoThread = new CompetitionInfoThread(this,handler,array);
         CompetitionInfoThread competitionInfoThread = new CompetitionInfoThread(this,handler,null);
         new Thread(competitionInfoThread).start();
 
     }
-    private  void queryTeams(){
-        teamInfoList= DataSupport.findAll(TeamInfo.class);
-        if(teamInfoList.size()>0){
-            commentList.clear();
-            Log.d("Competition","Detail1");
-            for (TeamInfo team:teamInfoList){
-                commentList.add(team);
-                Log.d("Competition","Detail2");
-                Log.d("证明",team.gettTamInfoComments()+team.getCompetitionName());
-            }
-        }else{
-            String address="http://106.14.199.25:9091/teamInfo/browseTeamInfo";
-            queryFormServer(address);
-        }
-    }
-    private void queryFormServer(String address){
-        HttpUtil.sendOkHttpRequest(address, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e){
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                });
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String responseText=response.body().string();
-                boolean result=false;
-                result= Utility.handleProvinceResponse(responseText);
-                if (result){
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            queryTeams();
-                        }
-                    });
-                }
-            }
-        });
-    }
+//    private  void queryTeams(){
+//        teamInfoList= DataSupport.findAll(TeamInfo.class);
+//        if(teamInfoList.size()>0){
+//            commentList.clear();
+//            Log.d("Competition","Detail1");
+//            for (TeamInfo team:teamInfoList){
+//                commentList.add(team);
+//                Log.d("Competition","Detail2");
+//                Log.d("证明",team.gettTamInfoComments()+team.getCompetitionName());
+//            }
+//        }else{
+//            String address="http://106.14.199.25:9091/teamInfo/browseTeamInfo";
+//            queryFormServer(address);
+//        }
+//    }
+//    private void queryFormServer(String address){
+//        HttpUtil.sendOkHttpRequest(address, new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e){
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//                String responseText=response.body().string();
+//                boolean result=false;
+//                result= Utility.handleProvinceResponse(responseText);
+//                if (result){
+//                    runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            queryTeams();
+//                        }
+//                    });
+//                }
+//            }
+//        });
+//    }
 
     private String generateCompeteContent(String competeName,int competeImageId){
         return "编号为"+competeImageId+"\n"+competeName+"的介绍";
@@ -233,7 +232,7 @@ public class CompetitionDetailActivity extends AppCompatActivity {
     private String parseJSONWithGSON(String jsonDate){
         String name="";
         Gson gson=new Gson();
-        Competition2 competition = gson.fromJson(jsonDate, Competition2.class);
+        CompetitionWholeInfo competition = gson.fromJson(jsonDate, CompetitionWholeInfo.class);
         return competition.getName()+"\n"+
                 "级别：" + competition.getLevel() + "\n" +
                 "主办方：" + competition.getHost() + "\n" +

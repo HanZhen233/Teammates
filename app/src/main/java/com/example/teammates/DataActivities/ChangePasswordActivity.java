@@ -8,11 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.teammates.Data.User;
+import com.example.teammates.db.user.User;
 import com.example.teammates.MainActivity;
 import com.example.teammates.R;
-
-import org.litepal.crud.DataSupport;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 

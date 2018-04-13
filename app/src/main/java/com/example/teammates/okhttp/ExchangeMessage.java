@@ -2,11 +2,10 @@ package com.example.teammates.okhttp;
 
 import android.util.Log;
 
-import com.example.teammates.Data.User;
+import com.example.teammates.db.user.User;
 import com.example.teammates.RegisterActivity;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import org.litepal.crud.DataSupport;
 

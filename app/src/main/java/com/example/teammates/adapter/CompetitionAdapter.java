@@ -1,4 +1,4 @@
-package com.example.teammates.Compete;
+package com.example.teammates.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
+import com.example.teammates.competition.CompetitionDetailActivity;
+import com.example.teammates.db.competitionInfo.CompetitionSimpleInfo;
 
 import java.util.List;
 
@@ -21,7 +23,7 @@ import java.util.List;
 
 public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.ViewHolder> {
     private Context mContext;
-    private List<Competition1> competes;
+    private List<CompetitionSimpleInfo> competes;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
@@ -38,7 +40,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
         }
     }
 
-    public CompetitionAdapter(List<Competition1> competeList){
+    public CompetitionAdapter(List<CompetitionSimpleInfo> competeList){
         competes=competeList;
     }
     @Override
@@ -52,7 +54,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
             @Override
             public void onClick(View view) {
                 int position=holder.getAdapterPosition();
-                Competition1 compete=competes.get(position);
+                CompetitionSimpleInfo compete=competes.get(position);
                 Intent intent=new Intent(mContext,CompetitionDetailActivity.class);
                 intent.putExtra(CompetitionDetailActivity.Compete_Name,compete.getName());
                 intent.putExtra(CompetitionDetailActivity.Compete_Image_Id,compete.getImageId());
@@ -64,7 +66,7 @@ public class CompetitionAdapter extends RecyclerView.Adapter<CompetitionAdapter.
     }
 
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Competition1 compete=competes.get(position);
+        CompetitionSimpleInfo compete=competes.get(position);
         holder.competeName.setText(compete.getName());
         Glide.with(mContext).load(compete.getImageId()).into(holder.competeImage);
     }

@@ -1,4 +1,4 @@
-package com.example.teammates.db;
+package com.example.teammates.db.commentInfo;
 
 import org.litepal.crud.DataSupport;
 
@@ -6,7 +6,7 @@ import org.litepal.crud.DataSupport;
  * Created by Echo on 2018/4/13.
  */
 
-public class commentInfo extends DataSupport {
+public class CommentInfo extends DataSupport {
     private  String id;
     private  String commentInfo;
     private  String commentator;

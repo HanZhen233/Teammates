@@ -1,14 +1,12 @@
-package com.example.teammates.Compete;
+package com.example.teammates.competition;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.teammates.HomeSetting.HomeSearchActivity;
 import com.example.teammates.R;
 
 import okhttp3.FormBody;
@@ -17,7 +15,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class AddFindInfo extends AppCompatActivity {
+public class AddTeamActivity extends AppCompatActivity {
     private EditText editText;
     private Button button;
     private String inputText;
@@ -47,7 +45,7 @@ public class AddFindInfo extends AppCompatActivity {
                     OkHttpClient client=new OkHttpClient();
                     RequestBody requestBody=new FormBody.Builder()
                             .add("teamInfoId",competitionId)
-                            .add("commentInfo",inputText)
+                            .add("CommentInfo",inputText)
                             .build();
                     Request request=new Request.Builder()
                             .url("http://106.14.199.25:9091/competition/ContentByname")

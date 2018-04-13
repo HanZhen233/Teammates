@@ -1,14 +1,14 @@
-package com.example.teammates.Compete;
+package com.example.teammates.db.competitionInfo;
 
 /**
  * Created by Echo on 2018/2/27.
  */
 
-public class Competition1 {
+public class CompetitionSimpleInfo {
     private String name;
     private int imageId;
 
-    public Competition1(String name, int imageId){
+    public CompetitionSimpleInfo(String name, int imageId){
         this.name=name;
         this.imageId=imageId;
     }

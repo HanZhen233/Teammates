@@ -1,4 +1,4 @@
-package com.example.teammates.Data;
+package com.example.teammates.db.user;
 
 import org.litepal.crud.DataSupport;
 

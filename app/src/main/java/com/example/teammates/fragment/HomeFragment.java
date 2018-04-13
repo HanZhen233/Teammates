@@ -1,6 +1,4 @@
 package com.example.teammates.fragment;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,10 +14,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.teammates.Compete.Competition1;
-import com.example.teammates.Compete.CompetitionAdapter;
-import com.example.teammates.HomeSetting.HomeSearchActivity;
+import com.example.teammates.adapter.CompetitionAdapter;
+import com.example.teammates.competition.CompetitionSearchActivity;
 import com.example.teammates.R;
+import com.example.teammates.db.commentInfo.CommentInfo;
+import com.example.teammates.db.competitionInfo.CompetitionSimpleInfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,7 +35,7 @@ import okhttp3.Response;
 
 public class HomeFragment extends Fragment {
     private View view;
-    private List<Competition1> competeList=new ArrayList<>();
+    private List<CompetitionSimpleInfo> competeList=new ArrayList<>();
     private SwipeRefreshLayout swipeRefresh;
     private TextView response_text;
     @Nullable
@@ -51,25 +50,10 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Toolbar();
-//        if(competeList.isEmpty())
-//            sendrequestWithOkHttp();//发送get请求获取比赛信息
-//        else{
-//            competeList.clear();
-//            sendrequestWithOkHttp();//发送get请求获取比赛信息
-//        }
         CompeteRecyclerView();
         refresh();
         refreshCompete();
         sendrequestWithOkHttp();
-//        final Button sendrequest=(Button) getActivity().findViewById(R.id.send_require);
-//        response_text=(TextView) getActivity().findViewById(R.id.response_text);
-//        sendrequest.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                sendrequestWithOkHttp();
-//                Toast.makeText(getActivity(),"lalala",Toast.LENGTH_LONG).show();
-//            }
-//        });
     }
 
     private void Toolbar(){
@@ -81,7 +65,7 @@ public class HomeFragment extends Fragment {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), HomeSearchActivity.class);
+                Intent intent=new Intent(getActivity(), CompetitionSearchActivity.class);
                 startActivity(intent);
             }
         });
@@ -135,23 +119,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void initCompete(String name){
-        Competition1 competition=new Competition1(name,R.drawable.p1);
+        CompetitionSimpleInfo competition=new CompetitionSimpleInfo(name,R.drawable.p1);
         competeList.add(competition);
     }
 
     private void parseJSONWithGSON(String jsonDate){
         Gson gson=new Gson();
-        List<Competition1> competitionList=gson.fromJson(jsonDate,new TypeToken<List<Competition1>>()
-        {}.getType());
+        List<CompetitionSimpleInfo> competitionList=gson.fromJson(jsonDate,new TypeToken<List<CompetitionSimpleInfo>>()
+            {}.getType());
         String x="";
-        for(Competition1 competition:competitionList){
+        for(CompetitionSimpleInfo competition:competitionList){
             initCompete(competition.getName());
             x+=competition.getName();
             System.out.print(competition.getName());
         }
         showResponse(x);
     }
-
 
     private void showResponse(final String response){
         getActivity().runOnUiThread(new Runnable(){

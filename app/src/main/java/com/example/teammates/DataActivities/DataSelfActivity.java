@@ -6,10 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.teammates.Data.User;
+import com.example.teammates.db.user.User;
 import com.example.teammates.R;
 import com.example.teammates.RegisterActivity;
 

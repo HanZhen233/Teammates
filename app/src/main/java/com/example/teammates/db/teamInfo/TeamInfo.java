@@ -1,16 +1,15 @@
-package com.example.teammates.db;
+package com.example.teammates.db.teamInfo;
 
-import org.litepal.crud.DataSupport;
-import com.example.teammates.comment.TeamInfoComment;
+import com.example.teammates.db.commentInfo.CommentInfo;
 
 import java.util.List;
-//使用Competitino类
 
 /**
- * 数据库表结构
+ * Created by Echo on 2018/4/12.
+ * 找队友
  */
 
-public class teamInfo extends DataSupport {
+public class TeamInfo {
     private String competitionName;
     private String competitionLevel;
     private String connection;
@@ -18,23 +17,23 @@ public class teamInfo extends DataSupport {
     private String initiator;//发起者
     private String introduction;
     private String requirement;
-    private List<TeamInfoComment> teamInfoComments;
+    private List<CommentInfo> teamInfoComments;
     private String time;//评论时间
     private String university;
-//    public teamInfo(String competitionLevel, String competitionName, String connection,
-//                    String id, String initiator, String introduction, String requirement,
-//                    List<TeamInfoComment> teamInfoComments, String time, String university){
-//        this.competitionName=competitionName;
-//        this.competitionLevel=competitionLevel;
-//        this.connection=connection;
-//        this.id=id;
-//        this.initiator=initiator;
-//        this.introduction=introduction;
-//        this.requirement=requirement;
-//        this.teamInfoComments=teamInfoComments;
-//        this.time=time;
-//        this.university=university;
-//    }
+    public TeamInfo(String competitionLevel, String competitionName, String connection,
+                    String id, String initiator, String introduction, String requirement,
+                    List<CommentInfo> teamInfoComments, String time, String university){
+        this.competitionName=competitionName;
+        this.competitionLevel=competitionLevel;
+        this.connection=connection;
+        this.id=id;
+        this.initiator=initiator;
+        this.introduction=introduction;
+        this.requirement=requirement;
+        this.teamInfoComments=teamInfoComments;
+        this.time=time;
+        this.university=university;
+    }
     public String getCompetitionName(){
         return competitionName;
     }
@@ -84,10 +83,10 @@ public class teamInfo extends DataSupport {
         this.requirement=requirement;
     }
 
-    public List<TeamInfoComment> gettTamInfoComments(){
+    public List<CommentInfo> gettTamInfoComments(){
         return teamInfoComments;
     }
-    public void setTeamInfoComments(List<TeamInfoComment> teamInfoComments){
+    public void setTeamInfoComments(List<CommentInfo> teamInfoComments){
         this.teamInfoComments=teamInfoComments;
     }
 
@@ -105,4 +104,3 @@ public class teamInfo extends DataSupport {
         this.id=id;
     }
 }
-

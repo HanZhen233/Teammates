@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
         initData();
         initListener();
-        Connector.getDatabase();
+//        Connector.getDatabase();
     }
 
     protected void onResume(){

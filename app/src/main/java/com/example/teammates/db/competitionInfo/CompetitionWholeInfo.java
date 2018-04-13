@@ -1,10 +1,10 @@
-package com.example.teammates.Compete;
+package com.example.teammates.db.competitionInfo;
 
 /**
  * Created by Echo on 2018/2/27.
  */
 
-public class Competition2 {
+public class CompetitionWholeInfo {
     private String id;
     private String name;
     private String level;
@@ -14,7 +14,7 @@ public class Competition2 {
     private String link;
 
 
-    public Competition2(String id,String name, String level, String host, String time, String introduction, String link){
+    public CompetitionWholeInfo(String id,String name, String level, String host, String time, String introduction, String link){
         this.id=id;
         this.name=name;
         this.level=level;
