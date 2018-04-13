@@ -6,14 +6,40 @@ import org.litepal.crud.DataSupport;
  * Created by linji on 2018/2/28.
  */
 
-public class Person extends DataSupport {
+public class User extends DataSupport {
 
     private String name;
+    private String password;
+    private String sex;
     private String university;
-    private String school;
+    private String major;
     private String technology;
+    private String qq;
+    private String email;
     private String phone;
-    private String message;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String eMail) {
+        this.email = email;
+    }
 
     public String getName() {
         return name;
@@ -39,12 +65,12 @@ public class Person extends DataSupport {
         this.technology = technology;
     }
 
-    public String getSchool() {
-        return school;
+    public String getMajor() {
+        return major;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public String getPhone() {
@@ -55,11 +81,11 @@ public class Person extends DataSupport {
         this.phone = phone;
     }
 
-    public String getMessage() {
-        return message;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

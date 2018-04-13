@@ -7,7 +7,7 @@ import org.litepal.crud.DataSupport;
  */
 
 public class Projection extends DataSupport {
-    public Person person;
+    public User user;
     public String competitionName;
     public String gender;
     public String requirement;
@@ -21,12 +21,12 @@ public class Projection extends DataSupport {
         this.question = question;
     }
 
-    public Person getPerson() {
-        return person;
+    public User getUser() {
+        return user;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getCompetitionName() {

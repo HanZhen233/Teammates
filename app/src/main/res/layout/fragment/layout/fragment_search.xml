@@ -14,10 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@drawable/employer"
         android:id="@+id/Employer"
         android:orientation="vertical"
         >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="找队伍：当你需要寻找一支强大的队伍队伍或者无聊想看看其他人有什么好项目时，click me"
+            />
 
     </LinearLayout>
 
@@ -27,8 +33,16 @@
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_weight="1"
-        android:background="@drawable/employee"
+
         >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:text="招人啦：比赛想找人合作？有异想天开的想法，却不能独立实现？click me，一起发起项目吧"
+            />
 
     </LinearLayout>
 </LinearLayout>

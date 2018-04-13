@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <litepal>
     <dbname value="Information">
-        <version value="2"/>
+        <version value="3"/>
         <list>
-            <mapping class="com.example.teammates.Data.Person"></mapping>
+            <mapping class="com.example.teammates.Data.User"></mapping>
             <mapping class="com.example.teammates.Data.Message"></mapping>
             <mapping class="com.example.teammates.Data.Competition"></mapping>
             <mapping class="com.example.teammates.Data.Projection"></mapping>

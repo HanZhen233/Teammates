@@ -1,11 +1,9 @@
 package com.example.teammates;
 
-import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.teammates.fragment.MeFragment;
+import com.example.teammates.okhttp.ExchangeMessage;
 
 public class LoginActivity extends BaseActivity {
 
@@ -47,8 +45,8 @@ public class LoginActivity extends BaseActivity {
          */
         LayoutInflater inflater=LayoutInflater.from(this);
         final View textEntryView=inflater.inflate(R.layout.fragment_me,null);
-        final TextView status_in=(TextView)textEntryView.findViewById(R.id.status_in);
-        final TextView status_out=(TextView)textEntryView.findViewById(R.id.status_in);
+     //   final TextView status_in=(TextView)textEntryView.findViewById(R.id.status_in);
+       // final TextView status_out=(TextView)textEntryView.findViewById(R.id.status_out);
 
         boolean isRemember = pref.getBoolean("remember_password", false);
         if (isRemember) {
@@ -65,28 +63,33 @@ public class LoginActivity extends BaseActivity {
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
                 // 如果账号是admin且密码是123456，就认为登录成功
-                if (account.equals("admin") && password.equals("123456")) {
-                    editor = pref.edit();
-                    if (rememberPass.isChecked()) { // 检查复选框是否被选中
-                        editor.putBoolean("remember_password", true);
-                        editor.putString("account", account);
-                        editor.putString("password", password);
-                    } else {
-                        editor.clear();
-                    }
-                    editor.apply();
 
+                ExchangeMessage.sendrequestWithOkHttp(account,password);//发送信息到后台  并获取个人信息
 
-                    status_in.setVisibility(View.VISIBLE);
-                    status_out.setVisibility(View.GONE);
+//                if (account.equals("admin") && password.equals("123456")) {
+//                    editor = pref.edit();
+//                    if (rememberPass.isChecked()) { // 检查复选框是否被选中
+//                        editor.putBoolean("remember_password", true);
+//                        editor.putString("account", account);
+//                        editor.putString("password", password);
+//                    } else {
+//                        editor.clear();
+//                    }
+//                    editor.apply();
+//
+
+                  //  status_in.setVisibility(View.VISIBLE);
+                    //status_out.setVisibility(View.GONE);
+
+                    changeInfo();//发消息给后台，然后更改本地数据库中的个人信息，即Person表
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
-                } else {
+
                     Toast.makeText(LoginActivity.this, "account or password is invalid",
                             Toast.LENGTH_SHORT).show();
-                }
+
             }
         });
 
@@ -100,5 +103,11 @@ public class LoginActivity extends BaseActivity {
         });
 
     }
+    public void changeInfo(){
+
+
+
+    }
+
 
 }

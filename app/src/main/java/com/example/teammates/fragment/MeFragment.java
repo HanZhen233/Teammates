@@ -22,24 +22,25 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     private View view;
 
     private Button self;
-    private Button set;
-    private Button us;
-
+    private Button log_out;
+    private Button change;
+    private Button login;
 
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view=inflater.inflate(R.layout.fragment_me,container,false);
-        self=(Button)view.findViewById(R.id.self);
-        set=(Button)view.findViewById(R.id.set);
-        us=(Button)view.findViewById(R.id.us);
-        ImageView user=(ImageView)view.findViewById(R.id.image_icon);
+        view=inflater.inflate(R.layout.fragment_new_me,container,false);
+
+        self=(Button)view.findViewById(R.id.self_informatino);
+        log_out=(Button)view.findViewById(R.id.log_out);
+        change=(Button)view.findViewById(R.id.change_password);
+        login=(Button)view.findViewById(R.id.login);
 
         self.setOnClickListener(this);
-        set.setOnClickListener(this);
-        us.setOnClickListener(this);
-        user.setOnClickListener(new View.OnClickListener() {
+        log_out.setOnClickListener(this);
+        change.setOnClickListener(this);
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getContext(), LoginActivity.class);
@@ -61,18 +62,17 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View v){
         Intent intent=new Intent(getContext(), DataSelfActivity.class);
         switch (v.getId()){
-            case R.id.self:
-                intent.putExtra("key",self.getText().toString());
+            case R.id.self_informatino:
+                intent.putExtra("key","个人信息");
                 break;
-            case R.id.set:
-                intent.putExtra("key",set.getText().toString());
+            case R.id.log_out:
+                intent.putExtra("key","注销");
 
                 break;
-            case R.id.us:
-                intent.putExtra("key",us.getText().toString());
-                break;
-
+            case R.id.change_password:
+                intent.putExtra("key","修改密码");
         }
         startActivity(intent);
+
     }
 }

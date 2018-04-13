@@ -8,22 +8,24 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.teammates.R;
 
+import org.w3c.dom.Text;
+
 public class MessageActivity extends AppCompatActivity {
 
-    private ImageView titleImage;
+    private TextView sender_name;
     private TextView textContent;
+    private TextView answer;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message);
-
-        titleImage=(ImageView)findViewById(R.id.title_image);
+        sender_name=(TextView)findViewById(R.id.message_sender_name);
         textContent=(TextView)findViewById(R.id.information_in_message);
-        int imageId=getIntent().getIntExtra("head",0);
+        answer=(TextView)findViewById(R.id.answer);
         String content=getIntent().getStringExtra("content");
 
         textContent.setText(content);
-        Glide.with(this).load(imageId).into(titleImage);
+
 
     }
 }

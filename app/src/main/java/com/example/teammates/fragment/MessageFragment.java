@@ -8,10 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.teammates.R;
+import com.example.teammates.okhttp.ExchangeMessage;
 import com.example.teammates.recycler_item.InfoAdapter;
 import com.example.teammates.recycler_item.Information;
 
@@ -31,6 +30,10 @@ public class MessageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_message,container,false);
+
+       // ExchangeMessage.getMessage();//发送信息到后台 获取本用户的所有消息，
+
+
         return view;
     }
 
@@ -43,6 +46,7 @@ public class MessageFragment extends Fragment {
         else{
             initInfo();
         }
+
         RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.recycler_view);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -62,6 +66,8 @@ public class MessageFragment extends Fragment {
         i1.setContent("test 2");
         i1.setImageId(R.drawable.background);
         info.add(i1);
+
+        //需要每次点击这个都要  发送获取消息的
     }
 
 
