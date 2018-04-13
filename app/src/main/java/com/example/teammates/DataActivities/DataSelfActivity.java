@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.teammates.ActivityCollector;
 import com.example.teammates.db.user.User;
 import com.example.teammates.R;
 import com.example.teammates.RegisterActivity;
@@ -16,7 +18,6 @@ import com.example.teammates.okhttp.ExchangeMessage;
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -48,7 +49,7 @@ public class DataSelfActivity extends AppCompatActivity {
         phone_information=(TextView)findViewById(R.id.phone);
         qq_information=(TextView)findViewById(R.id.qq);
 
-        email_information=(TextView)findViewById(R.id.mail);
+        email_information=(TextView)findViewById(R.id.email);
 
         update=(Button)findViewById(R.id.update);
 
@@ -77,7 +78,7 @@ public class DataSelfActivity extends AppCompatActivity {
             phone_information.setText(user.getPhone());
             qq_information.setText(user.getQq());
 
-            email_information.setText(user.getMail());
+            email_information.setText(user.getEmail());
                 Log.d("mail", email_information.getText().toString());
             update.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,12 +100,22 @@ public class DataSelfActivity extends AppCompatActivity {
                 ExchangeMessage.getLogout(new okhttp3.Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-
+                        DataSelfActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(DataSelfActivity.this,"网络连接失败",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
-
+                        DataSelfActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(DataSelfActivity.this,"注销成功",Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
 
@@ -118,7 +129,7 @@ public class DataSelfActivity extends AppCompatActivity {
                 phone_information.setText("");
                 qq_information.setText("");
                 email_information.setText("");
-                finish();
+                ActivityCollector.finishAll();
 
 
                 break;

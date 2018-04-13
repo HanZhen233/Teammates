@@ -17,12 +17,17 @@ import com.example.teammates.db.user.User;
 import com.example.teammates.okhttp.ExchangeMessage;
 import com.example.teammates.okhttp.URL;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import org.litepal.crud.DataSupport;
 
 import java.io.IOException;
+import java.util.List;
 
 import okhttp3.Call;
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 import okhttp3.Response;
 
 public class LoginActivity extends BaseActivity {
@@ -73,9 +78,8 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View v) {
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-                // 如果账号是admin且密码是123456，就认为登录成功
 
-                ExchangeMessage.postLogin(account,password,new okhttp3.Callback(){
+                ExchangeMessage.postLogin(account,getBaseContext(),password,new okhttp3.Callback(){
 
                     public void onFailure(Call call, IOException e) {
                         LoginActivity.this.runOnUiThread(new Runnable() {
@@ -100,6 +104,7 @@ public class LoginActivity extends BaseActivity {
                         });
                     }
                 });
+
                 ExchangeMessage.getLogin(new okhttp3.Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
@@ -107,12 +112,12 @@ public class LoginActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                    //还是返回的  登陆html。。。
-                        Log.d("get_login", response.body().string());
+                    public void onResponse(Call call, Response response) throws IOException,JsonSyntaxException {
+                        String backdata=response.body().string();
                         Gson gson=new Gson();
                         DataSupport.deleteAll(User.class);
-                        User user=gson.fromJson(response.body().string(),User.class);
+                        Log.d("cookie", backdata);
+                        User user=gson.fromJson(backdata,User.class);
                         user.save();
                         Intent intent=new Intent(LoginActivity.this,MainActivity.class);
                         startActivity(intent);
@@ -137,9 +142,6 @@ public class LoginActivity extends BaseActivity {
     }
     public void changeInfo(){
 
-
-
     }
-
 
 }

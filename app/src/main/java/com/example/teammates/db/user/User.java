@@ -15,7 +15,7 @@ public class User extends DataSupport {
     private String major;
     private String technology;
     private String qq;
-    private String mail;
+    private String email;
     private String phone;
 
     public String getSex() {
@@ -33,12 +33,12 @@ public class User extends DataSupport {
         this.qq = qq;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {

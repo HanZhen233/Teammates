@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/me"
     tools:context="com.example.teammates.DataActivities.MessageActivity">
 
     <TextView
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/message_sender_name"
         android:textSize="20sp"
+        android:text="消息"
         android:gravity="center"
         />
 
