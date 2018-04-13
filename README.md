@@ -22,6 +22,15 @@ MessageActivity  关于消息的界面相应活动
 
 在search_part包中，是关于 找队伍 和  招队友  的类
 
+Register的时候呢，在RegisterActivity中调用 ExchangeMessage.sendRegister(user)
+
+将刚才填写的user送去后台。
+
+login的时候,在LoginActivity中调用ExchangeMessage.sendrequestWithOkhttp()
+
+里面的parseJsonWithGson()方法是 传入String jsdata,String param  param表示返回的信息是哪个类，虽然没有用到
+   
+
 ---
 1. Comment包（用户在比赛项目下发起的寻找队友有关的包）
    - Comment评论的类
@@ -37,7 +46,8 @@ MessageActivity  关于消息的界面相应活动
    - 放入了比赛项目的RecyclerView
 3. db包
    - 此目录待删除，也是没用的。
-   
+ 
+
 
 
 
