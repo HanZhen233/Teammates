@@ -43,7 +43,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-       view=inflater.inflate(R.layout.fragment_home,container,false);
+        view=inflater.inflate(R.layout.fragment_home,container,false);
         return view;
     }
 
@@ -142,7 +142,7 @@ public class HomeFragment extends Fragment {
     private void parseJSONWithGSON(String jsonDate){
         Gson gson=new Gson();
         List<Competition1> competitionList=gson.fromJson(jsonDate,new TypeToken<List<Competition1>>()
-            {}.getType());
+        {}.getType());
         String x="";
         for(Competition1 competition:competitionList){
             initCompete(competition.getName());

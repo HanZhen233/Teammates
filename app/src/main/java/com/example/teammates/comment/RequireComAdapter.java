@@ -12,12 +12,12 @@ import java.util.List;
 
 /**
  * Created by Echo on 2018/4/11.
- * 评论
+ * 找队友
  */
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
+public class RequireComAdapter extends RecyclerView.Adapter<RequireComAdapter.ViewHolder> {
 
-    private List<Comment> mComment;
+    private List<TeamInfo> mComment;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView user_name;
@@ -26,12 +26,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
         public ViewHolder(View view) {
             super(view);
-            user_name=(TextView) view.findViewById(R.id.user_name);
+            user_name=(TextView) view.findViewById(R.id.competition_name);
             edit_time=(TextView) view.findViewById(R.id.edit_time);
             content=(TextView) view.findViewById(R.id.content);
         }
     }
-    public CommentAdapter(List<Comment> commentList){
+    public RequireComAdapter(List<TeamInfo> commentList){
         mComment=commentList;
     }
     @Override
@@ -44,11 +44,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Comment comment=mComment.get(position);
+        TeamInfo comment=mComment.get(position);
         //填充内容
-        holder.user_name.setText(comment.getName());
+        holder.user_name.setText(comment.getInitiator());
         holder.edit_time.setText(comment.getTime());
-        holder.content.setText(comment.getContent());
+        holder.content.setText(comment.getIntroduction());
     }
 
     @Override
