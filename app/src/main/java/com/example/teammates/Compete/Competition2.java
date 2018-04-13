@@ -5,6 +5,7 @@ package com.example.teammates.Compete;
  */
 
 public class Competition2 {
+    private String id;
     private String name;
     private String level;
     private String host;
@@ -13,7 +14,8 @@ public class Competition2 {
     private String link;
 
 
-    public Competition2(String name, String level, String host, String time, String introduction, String link){
+    public Competition2(String id,String name, String level, String host, String time, String introduction, String link){
+        this.id=id;
         this.name=name;
         this.level=level;
         this.host=host;
@@ -21,6 +23,8 @@ public class Competition2 {
         this.introduction=introduction;
         this.link=link;
     }
+    public String getId(){return id;}
+    public void setId(String id){this.id=id;}
 
     public String getName() {
         return name;
@@ -28,7 +32,6 @@ public class Competition2 {
     public void setName(String name){
         this.name=name;
     }
-
 
     public String getHost(){return host;}
     public void setHost(String host){this.host=host;}

@@ -8,7 +8,14 @@
             <mapping class="com.example.teammates.Data.Competition"></mapping>
             <mapping class="com.example.teammates.Data.Projection"></mapping>
             <mapping class="com.example.teammates.Data.Person_extend"></mapping>
-            <mapping class="com.example.teammates.db.Competition"></mapping>
+            <mapping class="com.example.teammates.db.teamInfo"></mapping>
+        </list>
+    </dbname>
+    <dbname value="TeamInfo">
+        <version value="3"/>
+        <list>
+            <mapping class="com.example.teammates.db.teamInfo"></mapping>
+            <mapping class="com.example.teammates.db.commentInfo"></mapping>
         </list>
     </dbname>
 </litepal>

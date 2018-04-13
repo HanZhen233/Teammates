@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.teammates">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-sdk tools:overrideLibrary="scut.carson_ho.searchview" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 为解决添加的库兼容的最低版本与项目设置的版本不同 -->
+
     <application
         android:name="org.litepal.LitePalApplication"
         android:allowBackup="true"
@@ -23,12 +27,9 @@
         <activity android:name=".Compete.CompetitionDetailActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".search_part.SearchEmployerActivity" />
-        <activity android:name=".search_part.SearchEmployeeActivity"/>
-        <activity android:name=".HomeSetting.HomeSearchActivity"/>
+        <activity android:name=".search_part.SearchEmployeeActivity" />
+        <activity android:name=".HomeSetting.HomeSearchActivity" />
+        <activity android:name=".Compete.AddFindInfo"></activity>
     </application>
-
-    <uses-sdk tools:overrideLibrary="scut.carson_ho.searchview"/>
-    <!--为解决添加的库兼容的最低版本与项目设置的版本不同-->
-
 
 </manifest>
