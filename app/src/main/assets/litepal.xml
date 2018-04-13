@@ -3,7 +3,7 @@
     <dbname value="Information">
         <version value="5"/>
         <list>
-            <mapping class="com.example.teammates.Data.User"></mapping>
+            <mapping class="com.example.teammates.db.user.User"></mapping>
         </list>
     </dbname>
 
