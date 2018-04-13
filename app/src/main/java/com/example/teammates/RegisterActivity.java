@@ -11,7 +11,6 @@ import android.widget.Toast;
 import com.example.teammates.db.user.User;
 import com.example.teammates.okhttp.ExchangeMessage;
 import com.example.teammates.okhttp.URL;
-import com.google.gson.Gson;
 
 import org.litepal.crud.DataSupport;
 
@@ -61,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
         user.setTechnology(technology.getText().toString());
         user.setPhone(phone.getText().toString());
         user.setQq(qq.getText().toString());
-        user.setMail(mail.getText().toString());
+        user.setEmail(mail.getText().toString());
 
         user.save();
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/me"
     tools:layout_editor_absoluteY="25dp">
 
     <Space
@@ -25,8 +26,13 @@
         android:layout_marginEnd="6dp"
         android:layout_marginStart="6dp"
         android:text="个人信息"
+        android:background="#00000000"
+        android:textSize="20sp"
+        android:textColor="#456fff"
+
         app:layout_constraintBottom_toTopOf="@+id/log_out"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/space" />
 
@@ -38,12 +44,15 @@
         android:layout_marginEnd="6dp"
         android:layout_marginStart="6dp"
         android:text="修改密码"
+        android:textColor="#456fff"
+        android:background="#00000000"
+        android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/log_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/self_informatino"
-        app:layout_constraintVertical_bias="0.877" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/log_out"
@@ -52,9 +61,14 @@
         android:layout_marginBottom="65dp"
         android:layout_marginEnd="6dp"
         android:layout_marginStart="6dp"
+        android:background="#00000000"
+        android:textSize="20sp"
+        android:textColor="#456fff"
+
         android:text="注销"
         app:layout_constraintBottom_toTopOf="@+id/login"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/self_informatino" />
 
@@ -63,11 +77,15 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginStart="6dp"
+        android:background="#00000000"
+        android:textSize="20sp"
+        android:textColor="#456fff"
         android:text="登陆或注册"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/log_out" />
 </android.support.constraint.ConstraintLayout>
