@@ -45,14 +45,14 @@ login的时候,在LoginActivity中调用ExchangeMessage.sendrequestWithOkhttp()
 3. DataActivity包
    - 林家宝的部分
 4. db包
-   1. commentInfo
+   - commentInfo
       - CommentInfo队伍下方的评论的数据类
-   2. competitionInfo
+   - competitionInfo
       - CompetitionSimpleInfo 比赛项目的简略版数据类，用于首页的比赛信息显示。
       - CompetitionWholeInfo 比赛项目的详细版数据类，用于点击首页的具体比赛项目后跳转到的比赛详情界面。
-   3. teamInfo
+   - teamInfo
       - TeamInfo 队伍信息类。
-   4. user
+   - user
       - User用户信息类。
 5. fragment包（所有的碎片）
    - HomeFragment 主页
