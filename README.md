@@ -32,20 +32,41 @@ login的时候,在LoginActivity中调用ExchangeMessage.sendrequestWithOkhttp()
    
 
 ---
-1. Comment包（用户在比赛项目下发起的寻找队友有关的包）
-   - Comment评论的类
-   - CommentAdapter评论的适配器，用于RecyclerView
-1. Compete包
-   - Competition 比赛项目的名称和图片的类
-   - Competition2 多余的类，待删除。
-   - CompeteAdapter 比赛项目的适配器，你们懂得
-   - CompeteDetailActivity 点击具体的比赛项目后进入的活动
-2. HomeSetting包
-   - HomeSearchActivity 点击首页标题栏的搜索按钮进入的活动
-2. HomeFragment碎片
-   - 放入了比赛项目的RecyclerView
-3. db包
-   - 此目录待删除，也是没用的。
+1. adapter包(包含所有的适配器)
+   - CommentAdapter 队伍下方的评论的适配器。
+   - CompetitionAdapter 比赛项目的适配器，用于app首页的展示。
+   - TeamInfoAdapter 队伍的适配器。
+2. competition包（与比赛有关的活动,括号里时是对应的布局文件)
+   - AddTeamActivity（addfindinfo_activity.xml） 发起新队伍时的活动
+   - CompetitionDetailActivity(activity_compete_detail.xml) 点击首页的任意一个比赛项目进入的活动，里面有
+      - 此比赛项目的详细信息(compete_item.xml)
+      - 此比赛项目对应的所有队伍(team_info.xml)（现在卡在了这里，请求对应的所有队伍信息是没问题的，但是放在Recyclerview里时失败了）
+   - CompetitionSearchActivity (activity_home_search.xml) 点击首页上方的搜索图样进入的比赛项目搜索活动。
+3. DataActivity包
+   - 林家宝的部分
+4. db包
+   1. commentInfo
+      - CommentInfo队伍下方的评论的数据类
+   2. competitionInfo
+      - CompetitionSimpleInfo 比赛项目的简略版数据类，用于首页的比赛信息显示。
+      - CompetitionWholeInfo 比赛项目的详细版数据类，用于点击首页的具体比赛项目后跳转到的比赛详情界面。
+   3. teamInfo
+      - TeamInfo 队伍信息类。
+   4. user
+      - User用户信息类。
+5. fragment包（所有的碎片）
+   - HomeFragment 主页
+   - MeFragment 我的
+   - MessageFragment 个人信息
+   - SearchFragment 搜索
+6. okhttp包
+   - 林家宝的部分
+7. search_part包
+   - 林家宝的部分
+8. util包(用于网络请求）
+   - BaseHttpClient 网络请求类
+   - CompetitionInfoThread获取比赛信息类
+   - TheamInfoThread获取队伍信息类
  
 
 
