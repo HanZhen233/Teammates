@@ -40,7 +40,7 @@ login的时候,在LoginActivity中调用ExchangeMessage.sendrequestWithOkhttp()
    - AddTeamActivity（addfindinfo_activity.xml） 发起新队伍时的活动
    - CompetitionDetailActivity(activity_compete_detail.xml) 点击首页的任意一个比赛项目进入的活动，里面有
       - 此比赛项目的详细信息(compete_item.xml)
-      - 此比赛项目对应的所有队伍(team_info.xml)（现在卡在了这里，请求对应的所有队伍信息是没问题的，但是放在Recyclerview里时失败了）
+      - 此比赛项目对应的所有队伍(team_info.xml)
    - CompetitionSearchActivity (activity_home_search.xml) 点击首页上方的搜索图样进入的比赛项目搜索活动。
 3. DataActivity包
    - 林家宝的部分
