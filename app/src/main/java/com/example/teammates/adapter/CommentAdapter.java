@@ -38,7 +38,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.userfind_comment,parent,false);
+                .inflate(R.layout.team_info,parent,false);
         ViewHolder holder=new ViewHolder(view);
         return holder;
     }

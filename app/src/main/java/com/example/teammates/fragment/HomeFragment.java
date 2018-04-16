@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
     private View view;
     private List<CompetitionSimpleInfo> competeList=new ArrayList<>();
     private SwipeRefreshLayout swipeRefresh;
-    private TextView response_text;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

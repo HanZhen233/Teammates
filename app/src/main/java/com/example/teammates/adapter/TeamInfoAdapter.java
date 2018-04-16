@@ -20,7 +20,7 @@ import java.util.List;
 
 public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHolder> {
     private Context mContext;
-    private List<TeamInfo> mComment;
+    private List<TeamInfo> mteamList;
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
@@ -32,36 +32,35 @@ public class TeamInfoAdapter extends RecyclerView.Adapter<TeamInfoAdapter.ViewHo
         public ViewHolder(View view) {
             super(view);
             cardView=(CardView) view;
-            user_name=(TextView) view.findViewById(R.id.name);
+            user_name=(TextView) view.findViewById(R.id.initiator);
             edit_time=(TextView) view.findViewById(R.id.edit_time);
             content=(TextView) view.findViewById(R.id.content);
         }
     }
-    public TeamInfoAdapter(List<TeamInfo> commentList){
-        mComment=commentList;
+    public TeamInfoAdapter(List<TeamInfo> teamList){
+        mteamList=teamList;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (mComment==null){
+        if (mContext==null){
             mContext=parent.getContext();
         }
         View view= LayoutInflater.from(mContext)
-                .inflate(R.layout.userfind_comment,parent,false);
-        ViewHolder holder=new ViewHolder(view);
+                .inflate(R.layout.team_info,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TeamInfo comment=mComment.get(position);
+        TeamInfo team=mteamList.get(position);
         //填充内容
-        holder.user_name.setText(comment.getInitiator());
-        holder.edit_time.setText(comment.getTime());
-        holder.content.setText(comment.getIntroduction());
+        holder.user_name.setText(team.getInitiator());
+        holder.edit_time.setText(team.getTime());
+        holder.content.setText(team.getIntroduction());
     }
 
     @Override
     public int getItemCount() {
-        return mComment.size();
+        return mteamList.size();
     }
 }

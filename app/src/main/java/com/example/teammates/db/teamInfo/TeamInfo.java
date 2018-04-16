@@ -17,22 +17,21 @@ public class TeamInfo {
     private String initiator;//发起者
     private String introduction;
     private String requirement;
-    private List<CommentInfo> teamInfoComments;
+//    private List<CommentInfo> teamInfoComments;
     private String time;//评论时间
     private String university;
-    public TeamInfo(String competitionLevel, String competitionName, String connection,
-                    String id, String initiator, String introduction, String requirement,
-                    List<CommentInfo> teamInfoComments, String time, String university){
+    public TeamInfo(String id,String competitionName,String competitionLevel,String time,
+                      String university, String introduction,String initiator,String requirement
+                    ,String connection){
+        this.id=id;
         this.competitionName=competitionName;
         this.competitionLevel=competitionLevel;
-        this.connection=connection;
-        this.id=id;
-        this.initiator=initiator;
-        this.introduction=introduction;
-        this.requirement=requirement;
-        this.teamInfoComments=teamInfoComments;
         this.time=time;
         this.university=university;
+        this.introduction=introduction;
+        this.initiator=initiator;
+        this.requirement=requirement;
+        this.connection=connection;
     }
     public String getCompetitionName(){
         return competitionName;
@@ -83,12 +82,12 @@ public class TeamInfo {
         this.requirement=requirement;
     }
 
-    public List<CommentInfo> gettTamInfoComments(){
-        return teamInfoComments;
-    }
-    public void setTeamInfoComments(List<CommentInfo> teamInfoComments){
-        this.teamInfoComments=teamInfoComments;
-    }
+//    public List<CommentInfo> gettTamInfoComments(){
+//        return teamInfoComments;
+//    }
+//    public void setTeamInfoComments(List<CommentInfo> teamInfoComments){
+//        this.teamInfoComments=teamInfoComments;
+//    }
 
     public String getUniversity(){
         return university;

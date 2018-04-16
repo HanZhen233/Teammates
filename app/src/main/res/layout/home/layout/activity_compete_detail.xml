@@ -51,20 +51,17 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="35dp"
-                app:cardCornerRadius="4dp">
-
-                    <TextView
-                        android:id="@+id/compete_content_text"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:layout_margin="10dp"
-                        android:textSize="18sp"
-                        android:text="一三四"
-                        android:textColor="#FF4F4E4F"/>
-
+                app:cardCornerRadius="4dp"
+                >
+                <TextView
+                    android:id="@+id/compete_content_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_margin="10dp"/>
             </android.support.v7.widget.CardView>
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/comment_view"
+                android:id="@+id/team_recyclerview"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp">
