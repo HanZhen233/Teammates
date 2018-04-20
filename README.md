@@ -68,7 +68,3 @@ login的时候,在LoginActivity中调用ExchangeMessage.sendrequestWithOkhttp()
    - CompetitionInfoThread获取比赛信息类
    - TheamInfoThread获取队伍信息类
  
-
-
-
-
