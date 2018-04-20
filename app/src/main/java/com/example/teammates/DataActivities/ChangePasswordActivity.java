@@ -11,6 +11,13 @@ import android.widget.Toast;
 import com.example.teammates.db.user.User;
 import com.example.teammates.MainActivity;
 import com.example.teammates.R;
+import com.example.teammates.okhttp.ExchangeMessage;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class ChangePasswordActivity extends AppCompatActivity {
 
@@ -34,9 +41,25 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     user.setPassword(new_pass.getText().toString());
                     user.updateAll("name = ?",user.getName());
                     //还差  向后台消息的 代码
-                    Toast.makeText(ChangePasswordActivity.this,"更改密码成功",Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(ChangePasswordActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    ExchangeMessage.postChange(new_pass.getText().toString(), new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            Intent intent=new Intent(ChangePasswordActivity.this,MainActivity.class);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(ChangePasswordActivity.this,"修改成功",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            startActivity(intent);
+                        }
+                    });
+
                 }else{
                     Toast.makeText(ChangePasswordActivity.this,"原密码错误或两次输入的密码不一致",Toast.LENGTH_SHORT).show();
                 }

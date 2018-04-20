@@ -99,8 +99,8 @@ public class LoginActivity extends BaseActivity {
                         LoginActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(LoginActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
-                                Log.d("login", backData);
+
+                                Log.d("backdata", backData);
                             }
                         });
                     }
@@ -113,20 +113,30 @@ public class LoginActivity extends BaseActivity {
                     }
 
                     @Override
-                    public void onResponse(Call call, Response response) throws IOException,JsonSyntaxException {
+                    public void onResponse(Call call, final Response response) throws IOException {
                         final String backdata=response.body().string();
-//                        Gson gson=new Gson();
-//                        DataSupport.deleteAll(User.class);
-//                        Log.d("cookie", backdata);
-//                        User user=gson.fromJson(backdata,User.class);
-//                        user.save();
                         LoginActivity.this.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(LoginActivity.this,"",Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(LoginActivity.this,MainActivity.class);
-                                startActivity(intent);
-                                finish();
+                                Gson gson=new Gson();
+                                User user=gson.fromJson(backdata,User.class);
+                                Log.d("fuck","fuck"+backdata);
+                              if(user!=null){
+                                  DataSupport.deleteAll(User.class);
+                                  user.save();
+
+                                  Toast.makeText(LoginActivity.this,"登录成功"+backdata,Toast.LENGTH_SHORT).show();
+
+                                  Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+                                  startActivity(intent);
+                                  finish();
+                              }else{
+                                  Toast.makeText(LoginActivity.this,"因为不知名原因失败，可能是服务器关了",Toast.LENGTH_SHORT).show();
+
+                              }
+
+
+
                             }
                         });
 
@@ -146,9 +156,6 @@ public class LoginActivity extends BaseActivity {
                 finish();
             }
         });
-
-    }
-    public void changeInfo(){
 
     }
 
